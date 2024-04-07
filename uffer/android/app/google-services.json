@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "42526084061",
+    "project_id": "uffer-9d3dd",
+    "storage_bucket": "uffer-9d3dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42526084061:android:fcb63fc7b13f20d51b4434",
+        "android_client_info": {
+          "package_name": "com.example.uffer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJRzvB8575WLM9atLgwcP9jcMzObKPeRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
