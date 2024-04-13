@@ -1,17 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-enum numeroDeAssentos {
-  selecione("Selecione o número de assentos", -1),
-  um('1', 1),
-  dois('2', 2),
-  tres('3', 3);
-
-  final int val;
-  final String elemento;
-
-  const numeroDeAssentos(this.elemento, this.val);
-}
+List<dynamic> numeroDeAssentos = ["Selecione", 1, 2, 3, 4];
 
 class RegistroDeCarro extends StatefulWidget {
   const RegistroDeCarro({super.key});
@@ -28,10 +18,12 @@ class RegistroDeCarroState extends State<RegistroDeCarro> {
   final TextEditingController _placa = TextEditingController();
   final TextEditingController _cor = TextEditingController();
   final TextEditingController _marca = TextEditingController();
-  int? assentosSelecionados;
+  dynamic assentosSelecionados;
 
   _cadastrar() {
-
+    if (_formKey.currentState!.validate()) {
+      return;
+    }
   }
 
   @override
@@ -43,16 +35,24 @@ class RegistroDeCarroState extends State<RegistroDeCarro> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.all(20),
-                  child: const Text(
-                    "Troca de Carros",
-                  ),
+                  margin: const EdgeInsets.all(20),
+                  child: const Text("Cadastro de Carros",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 30,
+                      )),
                 ),
                 SizedBox(
                   width: 450,
                   child: Padding(
                     padding: const EdgeInsets.all(10),
-                    child: TextField(
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Registre a marca do seu carro";
+                        }
+                        return null;
+                      },
                       controller: _marca,
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(),
@@ -64,8 +64,14 @@ class RegistroDeCarroState extends State<RegistroDeCarro> {
                   width: 450,
                   child: Padding(
                     padding: const EdgeInsets.all(10),
-                    child: TextField(
+                    child: TextFormField(
                       controller: _placa,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Registre a placa do seu carro";
+                        }
+                        return null;
+                      },
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Digite a placa do seu carro"),
@@ -76,8 +82,14 @@ class RegistroDeCarroState extends State<RegistroDeCarro> {
                   width: 450,
                   child: Padding(
                     padding: const EdgeInsets.all(10),
-                    child: TextField(
+                    child: TextFormField(
                       controller: _cor,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Registre a cor do seu carro";
+                        }
+                        return null;
+                      },
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Digite a cor do seu carro"),
@@ -85,20 +97,29 @@ class RegistroDeCarroState extends State<RegistroDeCarro> {
                   ),
                 ),
                 Container(
+                  width: 420,
                   margin: const EdgeInsets.all(10),
-                  child: DropdownMenu<numeroDeAssentos>(
-                      initialSelection: numeroDeAssentos.selecione,
-                      requestFocusOnTap: true,
-                      width: 430,
-                      onSelected: (numeroDeAssentos? n ){
+                  child: DropdownButtonFormField<dynamic>(
+                      value: numeroDeAssentos.first,
+                      icon: const Icon(Icons.arrow_downward),
+                      elevation: 16,
+                      validator: (value){
+                        if(value.toString() == "Selecione"){
+                          return "Selecione um valor válido";
+                        }
+                        return null;
+                      },
+                      style: const TextStyle(color: Colors.deepPurple),
+                      onChanged: (dynamic n ) {
                         setState(() {
-                          assentosSelecionados = n?.val;
+                          assentosSelecionados = n!;
                         });
                       },
-                      dropdownMenuEntries: numeroDeAssentos.values
-                          .map<DropdownMenuEntry<numeroDeAssentos>>(
-                              (numeroDeAssentos n) {
-                        return DropdownMenuEntry(value: n, label: n.elemento);
+                      items: numeroDeAssentos.map<DropdownMenuItem<dynamic>>((dynamic n) {
+                                return DropdownMenuItem<dynamic>(
+                                    value: n,
+                                    child: Text(n.toString())
+                                );
                       }).toList()),
                 ),
                 SizedBox(
