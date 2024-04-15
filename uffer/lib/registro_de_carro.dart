@@ -4,7 +4,9 @@ import 'package:flutter/widgets.dart';
 List<dynamic> numeroDeAssentos = ["Selecione", 1, 2, 3, 4];
 
 class RegistroDeCarro extends StatefulWidget {
-  const RegistroDeCarro({super.key});
+  final int? criarEditar;
+
+  const RegistroDeCarro({super.key, this.criarEditar});
 
   @override
   State<StatefulWidget> createState() {
@@ -14,7 +16,6 @@ class RegistroDeCarro extends StatefulWidget {
 
 class RegistroDeCarroState extends State<RegistroDeCarro> {
   final _formKey = GlobalKey<FormState>();
-
   final TextEditingController _placa = TextEditingController();
   final TextEditingController _cor = TextEditingController();
   final TextEditingController _marca = TextEditingController();
@@ -36,9 +37,9 @@ class RegistroDeCarroState extends State<RegistroDeCarro> {
               children: [
                 Container(
                   margin: const EdgeInsets.all(20),
-                  child: const Text("Cadastro de Carros",
+                  child: Text(widget.criarEditar == 0 ? "Cadastrar Carro ": "Editar Carro",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 30,
                       )),
                 ),
@@ -103,23 +104,22 @@ class RegistroDeCarroState extends State<RegistroDeCarro> {
                       value: numeroDeAssentos.first,
                       icon: const Icon(Icons.arrow_downward),
                       elevation: 16,
-                      validator: (value){
-                        if(value.toString() == "Selecione"){
+                      validator: (value) {
+                        if (value.toString() == "Selecione") {
                           return "Selecione um valor válido";
                         }
                         return null;
                       },
                       style: const TextStyle(color: Colors.deepPurple),
-                      onChanged: (dynamic n ) {
+                      onChanged: (dynamic n) {
                         setState(() {
                           assentosSelecionados = n!;
                         });
                       },
-                      items: numeroDeAssentos.map<DropdownMenuItem<dynamic>>((dynamic n) {
-                                return DropdownMenuItem<dynamic>(
-                                    value: n,
-                                    child: Text(n.toString())
-                                );
+                      items: numeroDeAssentos
+                          .map<DropdownMenuItem<dynamic>>((dynamic n) {
+                        return DropdownMenuItem<dynamic>(
+                            value: n, child: Text(n.toString()));
                       }).toList()),
                 ),
                 SizedBox(
@@ -131,7 +131,9 @@ class RegistroDeCarroState extends State<RegistroDeCarro> {
                         _cadastrar();
                         setState(() {});
                       },
-                      child: const Text('Cadastrar Carro'),
+                      child: widget.criarEditar == 0
+                          ? const Text('Cadastrar Carro')
+                          : const Text('Editar Carro'),
                     ),
                   ),
                 )

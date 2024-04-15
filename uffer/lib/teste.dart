@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: const RegistroDeCarro(), // This trailing comma makes auto-formatting nicer for build methods.
+      body: const RegistroDeCarro(criarEditar: 0), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
