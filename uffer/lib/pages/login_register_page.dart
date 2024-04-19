@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uffer/pages/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // Importe flutter_svg
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uffer/pages/home_page.dart'; // Importe flutter_svg
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -33,7 +34,12 @@ class LoginPage extends StatelessWidget {
                   fontSize: 16.0, // tamanho da fonte
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                ); // Navega para a HomePage
+              },
               style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.white,
                 foregroundColor: Colors.black,

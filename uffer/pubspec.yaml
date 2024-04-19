@@ -65,6 +65,12 @@ flutter:
   assets:
     - images/google-logo.png
     - images/logo-uffer.svg
+    - images/Banner.png
+    - images/handshake.png
+    - images/home.png
+    - images/person.png
+    - images/directions_car.png
+    - images/thumb_up.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
