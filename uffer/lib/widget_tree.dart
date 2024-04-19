@@ -1,6 +1,6 @@
 import 'package:uffer/pages/auth.dart';
 import 'package:uffer/pages/home_page.dart';
-import 'package:uffer/pages/login_register_page.dart';
+import 'package:uffer/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 
