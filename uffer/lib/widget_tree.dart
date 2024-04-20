@@ -13,16 +13,16 @@ class WidgetTree extends StatefulWidget {
 class _WidgetTreeState extends State<WidgetTree> {
   @override
   Widget build(BuildContext context) {
-    return const LoginPage();
-    // return StreamBuilder(
-    //   stream: Auth().authStateChanges,
-    //   builder: (context, snapshot) {
-    //     if (snapshot.hasData) {
-    //       return HomePage();
-    //     } else {
-    //       return const LoginPage();
-    //     }
-    //   }
-    // );
+    // return const LoginPage();
+    return StreamBuilder(
+      stream: Auth().authStateChanges,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return HomePage();
+        } else {
+          return const LoginPage();
+        }
+      }
+    );
   }
 }
