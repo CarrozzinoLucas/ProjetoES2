@@ -1,21 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class ServiceSection extends StatelessWidget {
   const ServiceSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+    return Padding(
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // TODO: TIRAR ESSE STYLING DAQUI
-          Text(
+          const Text(
             'Serviços',
             style: TextStyle(
               fontSize: 32,
@@ -24,19 +21,31 @@ class ServiceSection extends StatelessWidget {
               color: Color(0xFF004F9F),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             children: [
               Expanded(
                   child: ServiceButton(
-                icon: Icons.access_time_sharp,
+                icon: const Icon(
+                  Symbols.thumb_up,
+                  size: 32,
+                  weight: 400,
+                  opticalSize: 24,
+                ),
                 label: "Pedir Carona",
+                onPressed: () => {},
               )),
-              SizedBox(width: 16),
+              const SizedBox(width: 16),
               Expanded(
                   child: ServiceButton(
-                icon: Icons.access_time_sharp,
+                icon: const Icon(
+                  Symbols.directions_car,
+                  size: 32,
+                  weight: 400,
+                  opticalSize: 24,
+                ),
                 label: "Oferecer Carona",
+                onPressed: () => {},
               )),
             ],
           ),
@@ -48,18 +57,20 @@ class ServiceSection extends StatelessWidget {
 
 class ServiceButton extends StatelessWidget {
   final String label;
-  final IconData icon;
+  final Icon icon;
+  final void Function()? onPressed;
 
   const ServiceButton({
     super.key,
     required this.label,
     required this.icon,
+    required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: null,
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
@@ -68,7 +79,7 @@ class ServiceButton extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 32),
+            icon,
             const SizedBox(height: 8),
             Text(label),
           ],
