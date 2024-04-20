@@ -19,24 +19,24 @@ class HomePage extends StatelessWidget {
   }
 
   Future<void> signOut() async {
-      await Auth().signOut();
+    await Auth().signOut();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: <Widget>[
+        children: [
           const BannerWidget(),
           const SizedBox(
             height: 20,
             child: Divider(
-              thickness: 6, 
+              thickness: 6,
               color: Color(0xFFEAEAEA),
             ),
           ),
           const ServiceSection(),
-          _signOutButton()
+          _signOutButton(),
         ],
       ),
       bottomNavigationBar: const CustomBottomNavigationBar(),

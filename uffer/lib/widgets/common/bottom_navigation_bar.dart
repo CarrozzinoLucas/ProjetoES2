@@ -6,35 +6,21 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: [
-        BottomNavigationBarItem(
+    return NavigationBar(
+      destinations: [
+        NavigationDestination(
           icon: SvgPicture.asset('lib/images/home.svg', width: 15, height: 30),
           label: 'Home',
         ),
-        BottomNavigationBarItem(
+        NavigationDestination(
           icon: SvgPicture.asset('lib/images/handshake.svg', width: 30, height: 30),
           label: 'Caronas',
         ),
-        BottomNavigationBarItem(
+        NavigationDestination(
           icon: SvgPicture.asset('lib/images/person.svg', width: 15, height: 30),
           label: 'Perfil',
         ),
       ],
-      selectedItemColor: const Color(
-          0xFF415F91), // Define a cor do texto quando o item é selecionado
-      unselectedItemColor: const Color(
-          0xFF415F91), // Define a cor do texto quando o item não está selecionado
-      selectedLabelStyle: const TextStyle(
-        fontFamily: 'Barlow',
-        fontWeight: FontWeight.w500,
-        fontSize: 12,
-      ),
-      unselectedLabelStyle: const TextStyle(
-        fontFamily: 'Barlow',
-        fontWeight: FontWeight.w500,
-        fontSize: 12,
-      ),
     );
   }
 }
