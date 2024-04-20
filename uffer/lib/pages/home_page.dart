@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          BannerWidget(),
+          const BannerWidget(),
           const SizedBox(
             height: 20,
             child: Divider(
@@ -35,11 +35,11 @@ class HomePage extends StatelessWidget {
               color: Color(0xFFEAEAEA),
             ),
           ),
-          ServiceSection(),
+          const ServiceSection(),
           _signOutButton()
         ],
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }

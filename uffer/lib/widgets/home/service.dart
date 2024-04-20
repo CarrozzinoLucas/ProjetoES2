@@ -41,13 +41,12 @@ class ServiceSection extends StatelessWidget {
                         ),
                         backgroundColor: const Color(0xFFEAEAEA),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SvgPicture.asset('lib/images/thumb_up.svg'), // Ícone
-                          const SizedBox(
+                           SizedBox(
                               height: 8), // Espaçamento entre o ícone e o texto
-                          const Text(
+                           Text(
                             'Pedir Carona',
                             style: TextStyle(
                               fontSize: 13,
