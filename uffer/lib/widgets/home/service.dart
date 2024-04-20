@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ServiceSection extends StatelessWidget {
+  const ServiceSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -8,7 +12,7 @@ class ServiceSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Serviços',
             style: TextStyle(
               fontSize: 32,
@@ -17,7 +21,7 @@ class ServiceSection extends StatelessWidget {
               color: Color(0xFF004F9F),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -35,15 +39,15 @@ class ServiceSection extends StatelessWidget {
                           borderRadius:
                               BorderRadius.circular(10), // Bordas arredondadas
                         ),
-                        backgroundColor: Color(0xFFEAEAEA),
+                        backgroundColor: const Color(0xFFEAEAEA),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('images/thumb_up.png'), // Ícone
-                          SizedBox(
+                          SvgPicture.asset('lib/images/thumb_up.svg'), // Ícone
+                          const SizedBox(
                               height: 8), // Espaçamento entre o ícone e o texto
-                          Text(
+                          const Text(
                             'Pedir Carona',
                             style: TextStyle(
                               fontSize: 13,
@@ -72,16 +76,18 @@ class ServiceSection extends StatelessWidget {
                           borderRadius:
                               BorderRadius.circular(10), // Bordas arredondadas
                         ),
-                        backgroundColor: Color(0xFFEAEAEA),
+                        backgroundColor: const Color(0xFFEAEAEA),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('images/directions_car.png'), // Ícone
-                          SizedBox(
+                          SvgPicture.asset('lib/images/directions_car.svg'), // Ícone
+                          const SizedBox(
                               height: 8), // Espaçamento entre o ícone e o texto
-                          Text(
+                          const Text(
                             'Oferecer Carona',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,

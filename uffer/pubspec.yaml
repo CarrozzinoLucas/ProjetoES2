@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^1.0.3
+  flutter_svg: ^2.0.10+1
   google_sign_in: ^6.2.1
 
 
@@ -67,14 +67,21 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/google-logo.png
-    - images/logo-uffer.svg
-    - images/Banner.png
-    - images/handshake.png
-    - images/home.png
-    - images/person.png
-    - images/directions_car.png
-    - images/thumb_up.png
+    # - lib/images/google-logo.png
+    - lib/images/logo-uffer.svg
+    - lib/images/Banner.png
+    - lib/images/banner.svg
+    - lib/images/handshake.png
+    - lib/images/handshake.svg
+    - lib/images/home.png
+    - lib/images/home.svg
+    - lib/images/person.png
+    - lib/images/person.svg
+    - lib/images/directions_car.png
+    - lib/images/directions_car.svg
+    - lib/images/car.svg
+    - lib/images/thumb_up.png
+    - lib/images/thumbs-up.svg
     - lib/images/google-logo.svg
     - lib/images/logo-uffer.svg
 

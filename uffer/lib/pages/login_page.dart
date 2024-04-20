@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:uffer/components/login/google_sign_in_button.dart';
-import 'package:uffer/components/common/logo_widget.dart';
+import 'package:uffer/widgets/login/google_sign_in_button.dart';
+import 'package:uffer/widgets/common/logo_widget.dart';
 import 'package:uffer/services/auth_service.dart';
 
 class LoginPage extends StatelessWidget {

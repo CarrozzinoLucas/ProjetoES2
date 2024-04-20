@@ -1,34 +1,42 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uffer/pages/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:uffer/widgets/banner.dart';
-import 'package:uffer/widgets/bottom_navigation_bar.dart';
-import 'package:uffer/widgets/service.dart';
+import 'package:uffer/widgets/home/banner.dart';
+import 'package:uffer/widgets/common/bottom_navigation_bar.dart';
+import 'package:uffer/widgets/home/service.dart';
 
 void main() {
-  runApp(HomePage());
+  runApp(const HomePage());
 }
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
+
+  Widget _signOutButton() {
+    return ElevatedButton(
+      onPressed: signOut,
+      child: const Text('Sign Out'),
+    );
+  }
+
+  Future<void> signOut() async {
+      await Auth().signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Home Page'),
-      // ),
       body: Column(
         children: <Widget>[
           BannerWidget(),
-          SizedBox(
-            height: 20, // Adicione uma margem inferior ao banner
+          const SizedBox(
+            height: 20,
             child: Divider(
-              thickness: 6, // Define a espessura da linha
-              color: Color(0xFFEAEAEA), // Cor da linha
+              thickness: 6, 
+              color: Color(0xFFEAEAEA),
             ),
           ),
-          ServiceSection(), // Adicione o conteúdo abaixo da linha divisória
+          ServiceSection(),
+          _signOutButton()
         ],
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
