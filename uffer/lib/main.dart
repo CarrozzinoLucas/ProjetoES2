@@ -4,7 +4,6 @@ import 'package:uffer/theme/theme.dart';
 import 'package:uffer/widgets/widget_tree.dart';
 import 'firebase_options.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

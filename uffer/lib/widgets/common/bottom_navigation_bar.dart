@@ -1,5 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:material_symbols_icons/symbols.dart';
+
+class AppIcon extends StatelessWidget {
+  final Color? color;
+  final IconData symbol;
+
+  const AppIcon({super.key, required this.symbol, this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      symbol,
+      size: 32,
+      weight: 400,
+      opticalSize: 24,
+      color: color ?? Theme.of(context).primaryColor,
+    );
+  }
+}
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
@@ -7,17 +25,17 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
-      destinations: [
+      destinations: const [
         NavigationDestination(
-          icon: SvgPicture.asset('lib/images/home.svg', width: 15, height: 30),
+          icon: AppIcon(symbol: Symbols.home),
           label: 'Home',
         ),
         NavigationDestination(
-          icon: SvgPicture.asset('lib/images/handshake.svg', width: 30, height: 30),
+          icon: AppIcon(symbol: Symbols.handshake),
           label: 'Caronas',
         ),
         NavigationDestination(
-          icon: SvgPicture.asset('lib/images/person.svg', width: 15, height: 30),
+          icon: AppIcon(symbol: Symbols.person),
           label: 'Perfil',
         ),
       ],

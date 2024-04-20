@@ -28,7 +28,7 @@ class MaterialTheme {
       onErrorContainer: Color(0xFF410002),
       background: Color(0xFFF9F9FF),
       onBackground: Color(0xFF191C20),
-      surface: Color(0xFFF9F9FF), // Fundo de botões e bottom bar
+      surface: Color(0xFFF9F9FF), // Fundo de botõess
       onSurface: Color(0xFF191C20),
       surfaceVariant: Color(0xFFE0E2EC),
       onSurfaceVariant: Color(0xFF44474E),
