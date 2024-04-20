@@ -1,27 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uffer/pages/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:uffer/widgets/home/banner.dart';
+import 'package:uffer/widgets/common/bottom_navigation_bar.dart';
+import 'package:uffer/widgets/home/service.dart';
 
 void main() {
-  runApp(HomePage());
+  runApp(const HomePage());
 }
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
-
-  final User? user = Auth().currentUser;
-
-  Future<void> signOut() async {
-    await Auth().signOut();
-  }
-
-  Widget _title() {
-    return const Text('Firebase Auth');
-  }
-
-  Widget _userUid() {
-    return Text(user?.email ?? 'User email');
-  }
+  const HomePage({super.key});
 
   Widget _signOutButton() {
     return ElevatedButton(
@@ -30,25 +18,28 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Future<void> signOut() async {
+      await Auth().signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: _title(),
-      ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _userUid(),
-            _signOutButton(),
-          ],
+      body: Column(
+        children: <Widget>[
+          BannerWidget(),
+          const SizedBox(
+            height: 20,
+            child: Divider(
+              thickness: 6, 
+              color: Color(0xFFEAEAEA),
+            ),
           ),
+          ServiceSection(),
+          _signOutButton()
+        ],
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }

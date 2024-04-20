@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.10+1
+  google_sign_in: ^6.2.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -37,6 +39,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_auth: ^4.19.0
   firebase_core: ^2.29.0
+  envied: ^0.5.4+1
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +51,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  envied_generator: ^0.5.4+1
+  build_runner: ^2.4.9
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -61,9 +66,24 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    # - lib/images/google-logo.png
+    - lib/images/logo-uffer.svg
+    - lib/images/Banner.png
+    - lib/images/banner.svg
+    - lib/images/handshake.png
+    - lib/images/handshake.svg
+    - lib/images/home.png
+    - lib/images/home.svg
+    - lib/images/person.png
+    - lib/images/person.svg
+    - lib/images/directions_car.png
+    - lib/images/directions_car.svg
+    - lib/images/car.svg
+    - lib/images/thumb_up.png
+    - lib/images/thumbs-up.svg
+    - lib/images/google-logo.svg
+    - lib/images/logo-uffer.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

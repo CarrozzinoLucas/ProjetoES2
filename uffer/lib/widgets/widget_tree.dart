@@ -1,13 +1,12 @@
 import 'package:uffer/pages/auth.dart';
 import 'package:uffer/pages/home_page.dart';
-import 'package:uffer/pages/login_register_page.dart';
+import 'package:uffer/pages/login_page.dart';
 import 'package:flutter/material.dart';
-
 
 class WidgetTree extends StatefulWidget {
   const WidgetTree({super.key});
 
-  @override 
+  @override
   State<WidgetTree> createState() => _WidgetTreeState();
 }
 
@@ -18,7 +17,7 @@ class _WidgetTreeState extends State<WidgetTree> {
       stream: Auth().authStateChanges,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return HomePage();
+          return const HomePage();
         } else {
           return const LoginPage();
         }
