@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class ServiceSection extends StatelessWidget {
   const ServiceSection({super.key});
@@ -8,10 +7,11 @@ class ServiceSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // TODO: TIRAR ESSE STYLING DAQUI
           const Text(
             'Serviços',
             style: TextStyle(
@@ -23,87 +23,67 @@ class ServiceSection extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                children: [
-                  SizedBox(
-                    width: 150,
-                    height: 120,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Adicione a ação desejada
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(10), // Bordas arredondadas
-                        ),
-                        backgroundColor: const Color(0xFFEAEAEA),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset('lib/images/thumb_up.svg'), // Ícone
-                          const SizedBox(
-                              height: 8), // Espaçamento entre o ícone e o texto
-                          const Text(
-                            'Pedir Carona',
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Roboto',
-                              color: Color(0xFF004F9F),
-                            ),
-                          ), //  // Texto
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  SizedBox(
-                    width: 150,
-                    height: 120,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Adicione a ação desejada
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(10), // Bordas arredondadas
-                        ),
-                        backgroundColor: const Color(0xFFEAEAEA),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset('lib/images/directions_car.svg'), // Ícone
-                          const SizedBox(
-                              height: 8), // Espaçamento entre o ícone e o texto
-                          const Text(
-                            'Oferecer Carona',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Roboto',
-                              color: Color(0xFF004F9F),
-                            ),
-                          ), // Texto
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              Expanded(
+                  child: ServiceButton(
+                icon: const Icon(
+                  Symbols.thumb_up,
+                  size: 32,
+                  weight: 400,
+                  opticalSize: 24,
+                ),
+                label: "Pedir Carona",
+                onPressed: () => {},
+              )),
+              const SizedBox(width: 16),
+              Expanded(
+                  child: ServiceButton(
+                icon: const Icon(
+                  Symbols.directions_car,
+                  size: 32,
+                  weight: 400,
+                  opticalSize: 24,
+                ),
+                label: "Oferecer Carona",
+                onPressed: () => {},
+              )),
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ServiceButton extends StatelessWidget {
+  final String label;
+  final Icon icon;
+  final void Function()? onPressed;
+
+  const ServiceButton({
+    super.key,
+    required this.label,
+    required this.icon,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+      child: SizedBox(
+        height: 128,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            icon,
+            const SizedBox(height: 8),
+            Text(label),
+          ],
+        ),
       ),
     );
   }

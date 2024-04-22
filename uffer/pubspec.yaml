@@ -40,6 +40,7 @@ dependencies:
   firebase_auth: ^4.19.0
   firebase_core: ^2.29.0
   envied: ^0.5.4+1
+  material_symbols_icons: ^4.2719.3
 
 dev_dependencies:
   flutter_test:
@@ -69,21 +70,8 @@ flutter:
   assets:
     # - lib/images/google-logo.png
     - lib/images/logo-uffer.svg
-    - lib/images/Banner.png
     - lib/images/banner.svg
-    - lib/images/handshake.png
-    - lib/images/handshake.svg
-    - lib/images/home.png
-    - lib/images/home.svg
-    - lib/images/person.png
-    - lib/images/person.svg
-    - lib/images/directions_car.png
-    - lib/images/directions_car.svg
-    - lib/images/car.svg
-    - lib/images/thumb_up.png
-    - lib/images/thumbs-up.svg
     - lib/images/google-logo.svg
-    - lib/images/logo-uffer.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
