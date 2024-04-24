@@ -85,6 +85,9 @@ flutter:
     - lib/images/thumbs-up.svg
     - lib/images/google-logo.svg
     - lib/images/logo-uffer.svg
+    - lib/images/add_icon.svg
+    - lib/images/clock_icon.svg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

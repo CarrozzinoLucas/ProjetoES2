@@ -9,6 +9,7 @@ class BlueButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       style: ButtonStyle(
+        elevation: MaterialStateProperty.all<double>(0),
         backgroundColor:
             MaterialStateProperty.all<Color>(const Color(0xFF004F9F)),
         minimumSize:

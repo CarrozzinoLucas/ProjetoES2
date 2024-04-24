@@ -20,7 +20,7 @@ class DraggableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: adicionar sombra no widget
-    // TODO: adicionar linha horizontal (pra mostrar que o widget é draggable)
+    // TODO: adicionar linha horizontal (pra mostrar que o widget é draggable) (exemplo em: https://medium.com/@rishi_singh/create-a-draggable-scrollable-bottomsheet-with-flutter-0ec50d93a3b9)
     return DraggableScrollableSheet(
       initialChildSize: 0.5,
       minChildSize: 0.3,
@@ -42,7 +42,7 @@ class DraggableWidget extends StatelessWidget {
                   children: [
                     // const Divider(thickness: 4, endIndent: 390),
                     SizedBox(
-                      // TODO: o height está dando overflow em alguns casos, melhorar essa lógica
+                      // height não pode ser menor que 73px, se não da overflow
                       height: 80, // space between header and body
                       width: double.infinity,
                       child: Column(
@@ -57,7 +57,7 @@ class DraggableWidget extends StatelessWidget {
                             ),
                           ),
                           if (subtitle != null)
-                          const SizedBox(height: 8), // space bewteen title and subtitle
+                          const SizedBox(height: 8), // space between title and subtitle
                             Text(
                               subtitle!,
                               style: const TextStyle(
@@ -80,9 +80,10 @@ class DraggableWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // body
+                          // TODO: add gap between body elements
                           if (body != null) ...body!,
                           // blue button
-                          const SizedBox(height: 24), // space bewteen body and blue button
+                          const SizedBox(height: 24), // space between body and blue button
                           BlueButton(buttonLabel: buttonLabel),
                         ],
                       ),
