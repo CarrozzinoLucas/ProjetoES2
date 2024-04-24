@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:uffer/pages/map_page.dart';
 
 class ServiceSection extends StatelessWidget {
   const ServiceSection({super.key});
@@ -32,7 +34,14 @@ class ServiceSection extends StatelessWidget {
                     height: 120,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Adicione a ação desejada
+                        Navigator.push(
+                          context,
+                          // MaterialPageRoute(builder: (context) => MapPage()),
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation, secondaryAnimation) => MapPage(),
+                            transitionDuration: Duration.zero,
+                            ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
