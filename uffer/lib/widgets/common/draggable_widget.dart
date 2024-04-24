@@ -34,17 +34,20 @@ class DraggableWidget extends StatelessWidget {
             child: Container(
                 color: Colors.white,
                 child: ListView(
+                  padding: const EdgeInsets.only(
+                    top: 34, // header padding
+                    bottom: 100,
+                  ),
                   controller: scrollController,
                   children: [
+                    // const Divider(thickness: 4, endIndent: 390),
                     SizedBox(
                       // TODO: o height está dando overflow em alguns casos, melhorar essa lógica
-                      height: 73,
+                      height: 80, // space between header and body
                       width: double.infinity,
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           // title & optional subtitle
-                          // TODO: deixar title e subtitle centralizados no container
                           Text(
                             title,
                             style: const TextStyle(
@@ -54,6 +57,7 @@ class DraggableWidget extends StatelessWidget {
                             ),
                           ),
                           if (subtitle != null)
+                          const SizedBox(height: 8), // space bewteen title and subtitle
                             Text(
                               subtitle!,
                               style: const TextStyle(
@@ -61,23 +65,28 @@ class DraggableWidget extends StatelessWidget {
                                 fontSize: 16,
                               ),
                             ),
-                          const Divider(),
                         ],
                       ),
                     ),
+                    const Divider(),
                     Padding(
-                      padding: const EdgeInsets.all(24),
+                      padding: const EdgeInsets.only(
+                        top: 16,
+                        right: 24,
+                        left: 24,
+                        bottom: 24,
+                      ), // body padding
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // body
                           if (body != null) ...body!,
-                          const SizedBox(height: 20),
                           // blue button
+                          const SizedBox(height: 24), // space bewteen body and blue button
                           BlueButton(buttonLabel: buttonLabel),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 )));
       },

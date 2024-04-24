@@ -31,7 +31,7 @@ class MapPage extends StatelessWidget {
               DestinationInput(label: 'Origem'),
               SizedBox(height: 10),
               // TODO: adicionar botao '+' do lado do input de destino
-              DestinationInput(label: 'Destino'),
+              DestinationInput(label: 'Destino'), 
             ],
           ),
         ],
