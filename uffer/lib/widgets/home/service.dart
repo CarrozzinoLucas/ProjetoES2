@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:uffer/pages/ask_for_rides_page.dart';
 
 class ServiceSection extends StatelessWidget {
   const ServiceSection({super.key});
@@ -7,7 +8,7 @@ class ServiceSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,7 +34,17 @@ class ServiceSection extends StatelessWidget {
                   opticalSize: 24,
                 ),
                 label: "Pedir Carona",
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    // MaterialPageRoute(builder: (context) => MapPage()),
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          const MapPage(),
+                      transitionDuration: Duration.zero,
+                    ),
+                  )
+                },
               )),
               const SizedBox(width: 16),
               Expanded(
@@ -81,7 +92,7 @@ class ServiceButton extends StatelessWidget {
           children: [
             icon,
             const SizedBox(height: 8),
-            Text(label),
+            Text(label, textAlign: TextAlign.center),
           ],
         ),
       ),

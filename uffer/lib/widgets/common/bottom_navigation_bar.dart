@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:uffer/pages/home_page.dart';
+import 'package:uffer/pages/profile_page.dart';
 
 class AppIcon extends StatelessWidget {
   final Color? color;
@@ -39,6 +41,40 @@ class CustomBottomNavigationBar extends StatelessWidget {
           label: 'Perfil',
         ),
       ],
+      onDestinationSelected: (index) {
+        switch (index) {
+          case 0:
+            Navigator.push(
+              context,
+              // MaterialPageRoute(builder: (context) => MapPage()),
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    const HomePage(),
+                transitionDuration: Duration.zero,
+              ),
+            );
+          case 1:
+            Navigator.push(
+              context,
+              // MaterialPageRoute(builder: (context) => MapPage()),
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    const HomePage(),
+                transitionDuration: Duration.zero,
+              ),
+            );
+          case 2:
+            Navigator.push(
+              context,
+              // MaterialPageRoute(builder: (context) => MapPage()),
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    const ProfilePage(),
+                transitionDuration: Duration.zero,
+              ),
+            );
+        }
+      },
     );
   }
 }
