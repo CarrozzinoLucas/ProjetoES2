@@ -10,14 +10,11 @@ class DestinationInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 340,
-      child: TextField(
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(),
-          labelText: label,
-          hintText: '',
-        ),
+    return TextField(
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        labelText: label,
+        hintText: '',
       ),
     );
   }

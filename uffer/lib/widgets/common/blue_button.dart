@@ -10,8 +10,8 @@ class BlueButton extends StatelessWidget {
       onPressed: () {},
       style: ButtonStyle(
         elevation: MaterialStateProperty.all<double>(0),
-        backgroundColor:
-            MaterialStateProperty.all<Color>(const Color(0xFF004F9F)),
+        backgroundColor: MaterialStateProperty.all<Color>(
+            const Color(0xFF004F9F)), // TODO: pegar essas cores da lib
         minimumSize:
             MaterialStateProperty.all<Size>(const Size(double.infinity, 48)),
       ),

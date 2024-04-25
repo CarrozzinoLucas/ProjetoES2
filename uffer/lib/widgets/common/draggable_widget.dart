@@ -6,7 +6,7 @@ class DraggableWidget extends StatelessWidget {
   final VoidCallback onButtonPressed;
   final String title;
   final String? subtitle;
-  final List<Widget>? body;
+  final Widget? body;
 
   const DraggableWidget({
     required this.buttonLabel,
@@ -21,6 +21,7 @@ class DraggableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: adicionar sombra no widget
     // TODO: adicionar linha horizontal (pra mostrar que o widget é draggable) (exemplo em: https://medium.com/@rishi_singh/create-a-draggable-scrollable-bottomsheet-with-flutter-0ec50d93a3b9)
+    // TODO: TROCAR O DRAGGABLESCROLLABLESHEET PELO BOTTOMSHEET
     return DraggableScrollableSheet(
       initialChildSize: 0.5,
       minChildSize: 0.3,
@@ -48,6 +49,7 @@ class DraggableWidget extends StatelessWidget {
                       child: Column(
                         children: [
                           // title & optional subtitle
+                          // TODO: tirar styles daqui
                           Text(
                             title,
                             style: const TextStyle(
@@ -57,14 +59,15 @@ class DraggableWidget extends StatelessWidget {
                             ),
                           ),
                           if (subtitle != null)
-                          const SizedBox(height: 8), // space between title and subtitle
-                            Text(
-                              subtitle!,
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),
+                            const SizedBox(
+                                height: 8), // space between title and subtitle
+                          Text(
+                            subtitle!,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
                             ),
+                          ),
                         ],
                       ),
                     ),
@@ -80,10 +83,10 @@ class DraggableWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // body
-                          // TODO: add gap between body elements
-                          if (body != null) ...body!,
+                          body ?? const SizedBox.shrink(),
                           // blue button
-                          const SizedBox(height: 24), // space between body and blue button
+                          const SizedBox(
+                              height: 24), // space between body and blue button
                           BlueButton(buttonLabel: buttonLabel),
                         ],
                       ),
