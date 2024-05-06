@@ -1,15 +1,16 @@
-import 'package:uffer/pages/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:uffer/pages/auth.dart';
 import 'package:uffer/widgets/home/banner.dart';
 import 'package:uffer/widgets/common/bottom_navigation_bar.dart';
 import 'package:uffer/widgets/home/service.dart';
+import 'package:uffer/widgets/home/top_bar.dart'; // Importe o widget TopBarWidget
 
 void main() {
   runApp(const HomePage());
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key});
 
   Widget _signOutButton() {
     return ElevatedButton(
@@ -27,15 +28,15 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const BannerWidget(),
-          const SizedBox(
-            height: 20,
-            child: Divider(
-              thickness: 6,
-              color: Color(0xFFEAEAEA),
-            ),
-          ),
+          TopBarWidget(), // Chamada do widget TopBarWidget
+          //
+
           const ServiceSection(),
+          const SizedBox(
+            height: 1, // Defina a altura desejada aqui
+          ),
+          const BannerWidget(),
+
           _signOutButton(),
         ],
       ),
