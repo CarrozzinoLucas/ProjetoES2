@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:uffer/pages/ask_for_rides_page.dart';
+import 'package:uffer/pages/driver_on_way.dart';
 
 class ServiceSection extends StatelessWidget {
   const ServiceSection({Key? key});
@@ -37,12 +38,13 @@ class ServiceSection extends StatelessWidget {
                   onPressed: () => {
                     Navigator.push(
                       context,
-                      // MaterialPageRoute(builder: (context) => MapPage()),
-                      PageRouteBuilder(
-                        pageBuilder: (context, animation, secondaryAnimation) =>
-                            const MapPage(),
-                        transitionDuration: Duration.zero,
-                      ),
+                      MaterialPageRoute(
+                          builder: (context) => DriverOnWayPage()),
+                      // PageRouteBuilder(
+                      //   pageBuilder: (context, animation, secondaryAnimation) =>
+                      //       const MapPage(),
+                      //   transitionDuration: Duration.zero,
+                      // ),
                     )
                   },
                 ),
