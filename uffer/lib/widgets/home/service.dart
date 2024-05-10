@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:uffer/pages/ask_for_rides_page.dart';
+import 'package:uffer/pages/search_rides_page.dart';
 
 class ServiceSection extends StatelessWidget {
   const ServiceSection({super.key});

@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:uffer/widgets/common/blue_button.dart';
 
 class DraggableWidget extends StatelessWidget {
-  final String buttonLabel;
   final VoidCallback onButtonPressed;
-  final String title;
+  final String? title;
   final String? subtitle;
   final Widget? body;
 
   const DraggableWidget({
-    required this.buttonLabel,
     required this.onButtonPressed,
-    required this.title,
+    this.title,
     this.subtitle,
     this.body,
     super.key,
@@ -19,48 +16,58 @@ class DraggableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: adicionar sombra no widget
-    // TODO: adicionar linha horizontal (pra mostrar que o widget é draggable) (exemplo em: https://medium.com/@rishi_singh/create-a-draggable-scrollable-bottomsheet-with-flutter-0ec50d93a3b9)
-    // TODO: TROCAR O DRAGGABLESCROLLABLESHEET PELO BOTTOMSHEET
-    return DraggableScrollableSheet(
-      initialChildSize: 0.5,
-      minChildSize: 0.3,
-      maxChildSize: 0.92,
-      builder: (BuildContext context, ScrollController scrollController) {
-        return ClipRRect(
+    return GestureDetector(
+      onVerticalDragStart: (_) {}, // Add functionality for drag start if needed
+      child: DraggableScrollableSheet(
+        initialChildSize: 0.5,
+        minChildSize: 0.3,
+        maxChildSize: 0.92,
+        builder: (BuildContext context, ScrollController scrollController) {
+          return ClipRRect(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(40),
               topRight: Radius.circular(40),
             ),
             child: Container(
-                color: Colors.white,
-                child: ListView(
-                  padding: const EdgeInsets.only(
-                    top: 34, // header padding
-                    bottom: 100,
+              color: Colors.white,
+              child: ListView(
+                padding: const EdgeInsets.only(
+                  top: 34, // header padding
+                  bottom: 100,
+                ),
+                controller: scrollController,
+                children: [
+                  // Drag Handle
+                  Center(
+                    child: Container(
+                      width: 40,
+                      height: 6,
+                      margin: const EdgeInsets.symmetric(vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                    ),
                   ),
-                  controller: scrollController,
-                  children: [
-                    // const Divider(thickness: 4, endIndent: 390),
-                    SizedBox(
-                      // height não pode ser menor que 73px, se não da overflow
-                      height: 80, // space between header and body
-                      width: double.infinity,
-                      child: Column(
-                        children: [
-                          // title & optional subtitle
-                          // TODO: tirar styles daqui
+                  // Title & Subtitle
+                  SizedBox(
+                    height: 32, // space between header and body
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        if (title != null) ...[
                           Text(
-                            title,
+                            title!,
                             style: const TextStyle(
                               color: Color(0xFF004F9F),
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          if (subtitle != null)
-                            const SizedBox(
-                                height: 8), // space between title and subtitle
+                        ],
+                        if (subtitle != null) ...[
+                          const SizedBox(
+                              height: 8), // space between title and subtitle
                           Text(
                             subtitle!,
                             style: const TextStyle(
@@ -69,31 +76,30 @@ class DraggableWidget extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),
+                      ],
                     ),
-                    const Divider(),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 16,
-                        right: 24,
-                        left: 24,
-                        bottom: 24,
-                      ), // body padding
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // body
-                          body ?? const SizedBox.shrink(),
-                          // blue button
-                          const SizedBox(
-                              height: 24), // space between body and blue button
-                          BlueButton(buttonLabel: buttonLabel),
-                        ],
-                      ),
+                  ),
+                  // Body
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      right: 24,
+                      left: 24,
+                      bottom: 24,
+                    ), // body padding
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Body
+                        body ?? const SizedBox.shrink(),
+                      ],
                     ),
-                  ],
-                )));
-      },
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
