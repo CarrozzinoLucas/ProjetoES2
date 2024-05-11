@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:uffer/pages/list_saved_places_page.dart';
-import 'package:uffer/pages/search_rides_page.dart';
 import 'package:uffer/widgets/common/action_painel.dart';
 import 'package:uffer/widgets/common/blue_button.dart';
 import 'package:uffer/widgets/common/map_widget.dart';
 import 'package:uffer/widgets/common/rounded_square_button.dart';
 import 'package:uffer/widgets/common/top_back_button.dart';
-import 'package:uffer/widgets/draggable/draggable_widget.dart';
+import 'package:uffer/widgets/common/draggable_widget.dart';
 
 class CancelRidePage extends StatelessWidget {
   final initialCameraPosition = const CameraPosition(
