@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TopBackButton extends StatelessWidget {
-  const TopBackButton({super.key});
+  final Color? color;
+
+  const TopBackButton({super.key, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class TopBackButton extends StatelessWidget {
           shape: BoxShape.circle,
         ),
         child: CircleAvatar(
-          backgroundColor: Colors.white,
+          backgroundColor: color ?? Colors.white,
           radius: 24,
           child: IconButton(
             icon: const Icon(Icons.arrow_back),
