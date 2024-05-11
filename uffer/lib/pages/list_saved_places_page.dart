@@ -5,7 +5,7 @@ import 'package:uffer/widgets/common/action_painel.dart';
 import 'package:uffer/widgets/common/blue_button.dart';
 import 'package:uffer/widgets/common/map_widget.dart';
 import 'package:uffer/widgets/common/top_back_button.dart';
-import 'package:uffer/widgets/draggable/draggable_widget.dart';
+import 'package:uffer/widgets/common/draggable_widget.dart';
 
 class ListSavedPlacesPage extends StatelessWidget {
   final initialCameraPosition = const CameraPosition(
