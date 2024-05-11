@@ -40,7 +40,7 @@ class ServiceSection extends StatelessWidget {
                     // MaterialPageRoute(builder: (context) => MapPage()),
                     PageRouteBuilder(
                       pageBuilder: (context, animation, secondaryAnimation) =>
-                          const MapPage(),
+                          const SearchRidesPage(),
                       transitionDuration: Duration.zero,
                     ),
                   )
