@@ -6,7 +6,7 @@ import 'package:uffer/widgets/common/destination_input_widget.dart';
 import 'package:uffer/widgets/common/map_widget.dart';
 import 'package:uffer/widgets/common/rounded_square_button.dart';
 import 'package:uffer/widgets/common/top_back_button.dart';
-import 'package:uffer/widgets/draggable/draggable_widget.dart';
+import 'package:uffer/widgets/common/draggable_widget.dart';
 
 class SearchRidesPage extends StatelessWidget {
   final initialCameraPosition = const CameraPosition(
