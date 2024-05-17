@@ -23,7 +23,7 @@ class DestinationInput extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100.0),
-          border: Border.all(color: const Color(0xFFD9D9D9)),
+          border: Border.all(color: const Color(0xFFE7E8EE)),
           color: const Color(0xFFF9FAFB),
         ),
         child: TextField(

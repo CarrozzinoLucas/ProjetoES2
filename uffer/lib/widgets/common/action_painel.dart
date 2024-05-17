@@ -33,7 +33,7 @@ class ActionPainel extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: const Color(0xFFD9D9D9)),
+          border: Border.all(color: const Color(0xFFE7E8EE)),
           color: const Color(0xFFF9FAFB),
         ),
         child: Column(
@@ -47,7 +47,7 @@ class ActionPainel extends StatelessWidget {
                 border: isLastOption
                     ? null
                     : const Border(
-                        bottom: BorderSide(color: Color(0xFFD9D9D9)),
+                        bottom: BorderSide(color: Color(0xFFE7E8EE)),
                       ),
               ),
               child: Padding(
