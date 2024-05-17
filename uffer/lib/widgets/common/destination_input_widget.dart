@@ -4,15 +4,19 @@ class DestinationInput extends StatelessWidget {
   final String label;
   final IconData? prefixIconData;
   final double iconSize;
+  final void Function()? onTap;
   final void Function(String)? onSubmitted;
+  final FocusNode? focusNode; 
   
   const DestinationInput({
     required this.label,
     this.prefixIconData,
     this.iconSize = 16.0,
+    this.onTap,
     this.onSubmitted,
-    super.key,
-  });
+    this.focusNode, 
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,9 @@ class DestinationInput extends StatelessWidget {
         ),
         child: TextField(
           controller: controller_,
+          focusNode: focusNode, // Definindo o focusNode
           onSubmitted: onSubmitted,
+          onTap: onTap,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(vertical: 8.0),
             labelText: label,

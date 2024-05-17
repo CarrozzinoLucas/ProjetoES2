@@ -1,0 +1,151 @@
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:uffer/pages/confirm_local_page.dart';
+import 'package:uffer/widgets/common/action_painel.dart';
+import 'package:uffer/widgets/common/destination_input_widget.dart';
+import 'package:uffer/widgets/common/map_widget.dart';
+import 'package:uffer/widgets/common/top_back_button.dart';
+import 'package:uffer/widgets/common/draggable_widget.dart';
+
+class SelectLocalPage extends StatefulWidget {
+  const SelectLocalPage({Key? key}) : super(key: key);
+
+  @override
+  _SelectLocalPageState createState() => _SelectLocalPageState();
+}
+
+class _SelectLocalPageState extends State<SelectLocalPage> {
+  final initialCameraPosition = const CameraPosition(
+    target: LatLng(-22.90152056342056, -43.12411775370665),
+    zoom: 11.0,
+  );
+  late FocusNode _destinationFocusNode;
+  late TextEditingController _destinationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _destinationFocusNode = FocusNode();
+    _destinationController = TextEditingController();
+
+    // Ativa o teclado e seleciona o campo de texto
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      FocusScope.of(context).requestFocus(_destinationFocusNode);
+    });
+  }
+
+  @override
+  void dispose() {
+    _destinationFocusNode.dispose();
+    _destinationController.dispose();
+    super.dispose();
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        children: [
+          MapWidget(initialCameraPosition: initialCameraPosition),
+          DraggableWidget(
+            initialChildSize: 1,
+            minChildSize: 0.3,
+            maxChildSize: 1,
+            body: Column(
+              children: [
+                Column(
+                  children: [
+                    const Text(
+                      'Selecionar local',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    DestinationInput(
+                      prefixIconData: Icons.circle,
+                      label: 'Endereço',
+                      onSubmitted: (String value) {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    const ConfirmLocalPage(),
+                            transitionDuration: Duration.zero,
+                          ),
+                        );
+                      },
+                      focusNode: _destinationFocusNode,
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                ActionPainel(
+                  options: const [
+                    Option(
+                        label: 'Locais salvos',
+                        leftIconData: Icons.star_border,
+                        rightIconData: Icons.arrow_forward_ios),
+                    Option(
+                        label: 'Selecionar no mapa',
+                        leftIconData: Icons.place_outlined,
+                        rightIconData: Icons.arrow_forward_ios),
+                  ],
+                  onPressed: () {
+                    print('Painel pressionado!');
+                  },
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                ActionPainel(
+                  options: const [
+                    Option(
+                        label: 'Rua Pedro Tavares Dias Pessoa, 543',
+                        leftIconData: Icons.place_outlined,
+                        rightIconData: Icons.arrow_forward_ios),
+                    Option(
+                        label: 'Av. Rui Barbosa, 1234',
+                        leftIconData: Icons.place_outlined,
+                        rightIconData: Icons.arrow_forward_ios),
+                    Option(
+                        label: 'Av. Gavião Peixoto, 4322',
+                        leftIconData: Icons.place_outlined,
+                        rightIconData: Icons.arrow_forward_ios),
+                    Option(
+                        label: 'Rua Lopes Trovão, 7263',
+                        leftIconData: Icons.place_outlined,
+                        rightIconData: Icons.arrow_forward_ios),
+                    Option(
+                        label: 'Rua Mem de Sá, 1010',
+                        leftIconData: Icons.place_outlined,
+                        rightIconData: Icons.arrow_forward_ios),
+                    Option(
+                        label: 'Rua Dr. Tavares de Macedo, 9289',
+                        leftIconData: Icons.place_outlined,
+                        rightIconData: Icons.arrow_forward_ios),
+                  ],
+                  onPressed: () {
+                    print('Painel pressionado!');
+                  },
+                ),
+              ],
+            ),
+          ),
+          const Positioned(
+            top: 50,
+            left: 20,
+            child: TopBackButton(
+              color: Color(0XFFEAEAEA),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
