@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:uffer/pages/cancel_ride.dart';
-import 'package:uffer/pages/confirm_local_page.dart';
+import 'package:uffer/pages/select_local_page.dart';
 import 'package:uffer/widgets/common/action_painel.dart';
 import 'package:uffer/widgets/common/destination_input_widget.dart';
 import 'package:uffer/widgets/common/map_widget.dart';
 import 'package:uffer/widgets/common/rounded_rectangle_button.dart';
-import 'package:uffer/widgets/common/rounded_square_button.dart';
 import 'package:uffer/widgets/common/top_back_button.dart';
 import 'package:uffer/widgets/common/draggable_widget.dart';
 import 'package:uffer/widgets/search_rides/passenger_popup.dart';
@@ -38,13 +36,13 @@ class SearchRidesPage extends StatelessWidget {
                   child: DestinationInput(
                     label: 'Origem',
                     prefixIconData: Icons.circle,
-                    onSubmitted: (String value) {
+                    onTap: () {
                       Navigator.push(
                         context,
                         PageRouteBuilder(
                           pageBuilder:
                               (context, animation, secondaryAnimation) =>
-                                  const ConfirmLocalPage(),
+                                  const SelectLocalPage(),
                           transitionDuration: Duration.zero,
                         ),
                       );
