@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:uffer/pages/cancel_ride.dart';
+import 'package:uffer/pages/confirm_local_page.dart';
 import 'package:uffer/widgets/common/action_painel.dart';
 import 'package:uffer/widgets/common/destination_input_widget.dart';
 import 'package:uffer/widgets/common/map_widget.dart';
+import 'package:uffer/widgets/common/rounded_rectangle_button.dart';
 import 'package:uffer/widgets/common/rounded_square_button.dart';
 import 'package:uffer/widgets/common/top_back_button.dart';
 import 'package:uffer/widgets/common/draggable_widget.dart';
+import 'package:uffer/widgets/search_rides/passenger_popup.dart';
 
 class SearchRidesPage extends StatelessWidget {
   final initialCameraPosition = const CameraPosition(
@@ -38,11 +41,10 @@ class SearchRidesPage extends StatelessWidget {
                     onSubmitted: (String value) {
                       Navigator.push(
                         context,
-                        // MaterialPageRoute(builder: (context) => MapPage()),
                         PageRouteBuilder(
                           pageBuilder:
                               (context, animation, secondaryAnimation) =>
-                                  const CancelRidePage(),
+                                  const ConfirmLocalPage(),
                           transitionDuration: Duration.zero,
                         ),
                       );
@@ -73,47 +75,26 @@ class SearchRidesPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  RoundedSquareButton(
-                    innerLabel: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // Text(
-                        //   '8:40',
-                        //   style: TextStyle(
-                        //     // fontWeight: FontWeight.bold,
-                        //     color: Color(0XFF004F9F),
-                        //   ),
-                        // ),
-                        Icon(
-                          Icons.access_time,
-                          color: Color(0XFF004F9F),
-                        ),
-                      ],
-                    ),
+                  RoundedRectangleButton(
+                    icon: const Icon(Icons.calendar_month, color: Color(0XFF004F9F)),
                     onPressed: () {},
-                    outerLabel: 'Agendar',
+                    label: 'Agendar',
                   ),
                   const SizedBox(
                     width: 32,
                   ),
-                  RoundedSquareButton(
-                    innerLabel: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // Text(
-                        //   '1',
-                        //   style: TextStyle(
-                        //     color: Color(0XFF004F9F),
-                        //   ),
-                        // ),
-                        Icon(
-                          Icons.person_add_outlined,
-                          color: Color(0XFF004F9F),
-                        ),
-                      ],
-                    ),
-                    onPressed: () {},
-                    outerLabel: 'Passageiros',
+                  RoundedRectangleButton(
+                    icon: const Icon(Icons.person_add_outlined, color: Color(0XFF004F9F),),
+                    onPressed: () {
+                      // Show the PassengerPopup dialog
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const PassengerPopup();
+                        },
+                      );
+                    },
+                    label: 'Passageiros',
                   ),
                 ],
               ),
@@ -125,17 +106,17 @@ class SearchRidesPage extends StatelessWidget {
                   Option(
                       label: 'Icaraí - UFF Praia Vermelha',
                       sublabel: '8:30h, 1 passageiro',
-                      leftIconData: Icons.place_outlined,
+                      leftIconData: Icons.directions_car_filled_outlined,
                       rightIconData: Icons.arrow_forward_ios),
                   Option(
                       label: 'São Francisco - UFF Valonguinho',
                       sublabel: '10:30h, 2 passageiros',
-                      leftIconData: Icons.place_outlined,
+                      leftIconData: Icons.directions_car_filled_outlined,
                       rightIconData: Icons.arrow_forward_ios),
                   Option(
                       label: 'Camboinhas - UFF Gragoatá',
                       sublabel: '6:30h, 1 passageiro',
-                      leftIconData: Icons.place_outlined,
+                      leftIconData: Icons.directions_car_filled_outlined,
                       rightIconData: Icons.arrow_forward_ios),
                 ],
                 onPressed: () {
