@@ -7,16 +7,25 @@ class AppIcon extends StatelessWidget {
   final Color? color;
   final IconData symbol;
 
-  const AppIcon({super.key, required this.symbol, this.color});
+  const AppIcon({Key? key, required this.symbol, this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Icon(
-      symbol,
-      size: 32,
-      weight: 400,
-      opticalSize: 24,
-      color: color ?? Theme.of(context).primaryColor,
+    return Container(
+      width: 48, // Define o tamanho do contêiner
+      height: 48,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle, // Define a forma do contêiner como um círculo
+        border: Border.all(
+            color: Color(0xFF004F9F), width: 2), // Adiciona uma borda azul
+      ),
+      child: Center(
+        child: Icon(
+          symbol,
+          size: 24, // Define o tamanho do ícone
+          color: color ?? Theme.of(context).primaryColor,
+        ),
+      ),
     );
   }
 }
@@ -27,6 +36,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
+      backgroundColor:
+          Colors.transparent, // Define a cor de fundo como transparente
+
       destinations: const [
         NavigationDestination(
           icon: AppIcon(symbol: Symbols.home),
