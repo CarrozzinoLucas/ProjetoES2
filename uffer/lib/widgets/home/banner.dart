@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:uffer/pages/ask_for_rides_page.dart';
+import 'package:uffer/pages/search_rides_page.dart';
 
 class BannerWidget extends StatelessWidget {
   const BannerWidget({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(24),
-      child: Column(
+    return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // TODO: TIRAR ESSE STYLING DAQUI
@@ -31,7 +29,7 @@ class BannerWidget extends StatelessWidget {
                       // MaterialPageRoute(builder: (context) => MapPage()),
                       PageRouteBuilder(
                         pageBuilder: (context, animation, secondaryAnimation) =>
-                            const MapPage(),
+                            const SearchRidesPage(),
                         transitionDuration: Duration.zero,
                       ),
                     )
@@ -41,8 +39,7 @@ class BannerWidget extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
+      );
   }
 }
 
@@ -67,9 +64,10 @@ class ServiceButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         backgroundColor: const Color(0xFFC7E3FF), // Cor de fundo
+        elevation: 0
       ),
       child: SizedBox(
-        height: 128,
+        height: 160,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

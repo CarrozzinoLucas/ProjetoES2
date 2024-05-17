@@ -12,17 +12,16 @@ class AppIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 48, // Define o tamanho do contêiner
-      height: 48,
+      height: 56,
       decoration: BoxDecoration(
-        shape: BoxShape.circle, // Define a forma do contêiner como um círculo
+        shape: BoxShape.circle, 
         border: Border.all(
-            color: Color(0xFF004F9F), width: 2), // Adiciona uma borda azul
+            color: Color(0xFF004F9F), width: 2), 
       ),
       child: Center(
         child: Icon(
           symbol,
-          size: 24, // Define o tamanho do ícone
+          size: 36, // Define o tamanho do ícone
           color: color ?? Theme.of(context).primaryColor,
         ),
       ),

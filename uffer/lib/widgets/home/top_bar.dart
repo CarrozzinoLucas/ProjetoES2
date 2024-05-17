@@ -6,42 +6,40 @@ class TopBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 56.0, horizontal: 20.0),
-      color: Color(0xFF004F9F), // Cor azul desejada
-      child: Column(
-        mainAxisAlignment:
-            MainAxisAlignment.end, // Alinhar os elementos ao final
+      height: 160,
+      color: const Color(0xFF004F9F),
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 40),
           Row(
             children: [
+              SizedBox(width: 24),
               CircleAvatar(
                 radius: 30,
-                backgroundColor: Colors.white, // Cor de fundo do círculo
+                backgroundColor: Colors.white,
                 child: Icon(
-                  Icons
-                      .person, // Ícone de usuário, você pode substituir por uma imagem
-                  size: 40, // Tamanho do ícone
-                  color: Color(0xFF004F9F), // Cor do ícone
+                  Icons.person,
+                  size: 40,
+                  color: Color(0xFF004F9F),
                 ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 24),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Olá,', // Texto do título
+                    'Olá,', 
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.white,
                     ),
                   ),
                   Text(
-                    'Nome!', // Texto do nome
+                    'Fulano!', 
                     style: TextStyle(
                       fontSize: 24,
-                      fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),

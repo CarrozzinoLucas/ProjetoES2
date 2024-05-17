@@ -30,11 +30,7 @@ class RoundedRectangleButton extends StatelessWidget {
               decoration: BoxDecoration(
                 color: const Color(0xFFF9FAFB),
                 borderRadius: BorderRadius.circular(borderRadius),
-                border: const Border(
-                  top: BorderSide(color: Color(0xFFE7E8EE)),
-                  left: BorderSide(color: Color(0xFFE7E8EE)),
-                  right: BorderSide(color: Color(0xFFE7E8EE)),
-                ),
+                border: Border.all(color: Color(0xFFE7E8EE)),
               ),
               child: Row(
                 children: [
