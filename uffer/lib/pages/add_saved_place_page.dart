@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:uffer/pages/ride_not_found_page.dart';
 import 'package:uffer/widgets/common/action_painel.dart';
 import 'package:uffer/widgets/common/destination_input_widget.dart';
 import 'package:uffer/widgets/common/map_widget.dart';
@@ -26,18 +27,31 @@ class AddSavedPlacePage extends StatelessWidget {
             maxChildSize: 1,
             body: Column(
               children: [
-                const Column(
+                Column(
                   children: [
-                    Text(
+                    const Text(
                       'Adicionar local',
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 24,
                     ),
                     DestinationInput(
-                        prefixIconData: Icons.circle, label: 'Endereço')
+                      prefixIconData: Icons.circle,
+                      label: 'Endereço',
+                      onSubmitted: (String value) {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    const RideNotFoundPage(),
+                            transitionDuration: Duration.zero,
+                          ),
+                        );
+                      },
+                    )
                   ],
                 ),
                 const SizedBox(
