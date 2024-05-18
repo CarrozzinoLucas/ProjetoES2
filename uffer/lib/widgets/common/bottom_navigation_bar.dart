@@ -7,7 +7,7 @@ class AppIcon extends StatelessWidget {
   final Color? color;
   final IconData symbol;
 
-  const AppIcon({Key? key, required this.symbol, this.color}) : super(key: key);
+  const AppIcon({super.key, required this.symbol, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +16,12 @@ class AppIcon extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle, 
         border: Border.all(
-            color: Color(0xFF004F9F), width: 2), 
+            color: const Color(0xFF004F9F), width: 2), 
       ),
       child: Center(
         child: Icon(
           symbol,
-          size: 36, // Define o tamanho do ícone
+          size: 32, 
           color: color ?? Theme.of(context).primaryColor,
         ),
       ),
