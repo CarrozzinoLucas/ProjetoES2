@@ -6,7 +6,6 @@ class Carona {
   bool retorno;
   bool apenasSoliciticao;
   String detalhesAdicionais;
-  int passageiroId;
   int motoristaId;
   int trajetoId;
 
@@ -18,7 +17,6 @@ class Carona {
       this.retorno,
       this.apenasSoliciticao,
       this.detalhesAdicionais,
-      this.passageiroId,
       this.motoristaId,
       this.trajetoId);
 }
