@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class RoundedSquareButton extends StatelessWidget {
-  final Widget innerLabel;
+  final IconData iconData;
   final VoidCallback onPressed;
   final double borderRadius;
   final double size;
   final String? outerLabel;
 
   const RoundedSquareButton({
-    required this.innerLabel,
+    required this.iconData,
     required this.onPressed,
     this.borderRadius = 16.0,
     this.size = 72.0,
@@ -32,15 +32,18 @@ class RoundedSquareButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(borderRadius),
                 border: Border.all(color: const Color(0xFFD9D9D9)),
               ),
-              child: Center(child: innerLabel),
+              child: Center(child: Icon(iconData, color: Color(0xff004F9F),)),
             ),
           ),
-          if (outerLabel != null) Text(
-            outerLabel!,
-            style: const TextStyle(
-              color: Color(0XFF44474E),
+          if (outerLabel != null) ...[
+            const SizedBox(height: 8),
+            Text(
+              outerLabel!,
+              style: const TextStyle(
+                color: Color(0XFF44474E),
+              ),
             ),
-            ),
+          ],
         ],
       ),
     );

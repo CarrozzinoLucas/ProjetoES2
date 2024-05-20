@@ -37,7 +37,7 @@ class DraggableWidget extends StatelessWidget {
               color: Colors.white,
               child: ListView(
                 padding: const EdgeInsets.only(
-                  top: 34, // header padding
+                  top: 16, // header padding
                   bottom: 100,
                 ),
                 controller: scrollController,

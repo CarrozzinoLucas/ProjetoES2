@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:uffer/pages/home_page.dart';
+import 'package:uffer/pages/list_rides_page.dart';
 import 'package:uffer/pages/profile_page.dart';
 
 class AppIcon extends StatelessWidget {
@@ -57,7 +58,6 @@ class CustomBottomNavigationBar extends StatelessWidget {
           case 0:
             Navigator.push(
               context,
-              // MaterialPageRoute(builder: (context) => MapPage()),
               PageRouteBuilder(
                 pageBuilder: (context, animation, secondaryAnimation) =>
                     const HomePage(),
@@ -67,17 +67,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
           case 1:
             Navigator.push(
               context,
-              // MaterialPageRoute(builder: (context) => MapPage()),
               PageRouteBuilder(
                 pageBuilder: (context, animation, secondaryAnimation) =>
-                    const HomePage(),
+                    const ListRidesPage(),
                 transitionDuration: Duration.zero,
               ),
             );
           case 2:
             Navigator.push(
               context,
-              // MaterialPageRoute(builder: (context) => MapPage()),
               PageRouteBuilder(
                 pageBuilder: (context, animation, secondaryAnimation) =>
                     const ProfilePage(),

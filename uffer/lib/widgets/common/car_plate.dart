@@ -9,17 +9,21 @@ class CarPlateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFFE7EEFF), // Azul claro
-        border: Border.all(color: const Color(0xFF66B2FF)), // Borda azul
-        borderRadius: BorderRadius.circular(8), // Borda arredondada
+        color: const Color(0xFFE7EEFF), 
+        border: Border.all(color: const Color(0xFF66B2FF), width: 0.5),
+        borderRadius: BorderRadius.circular(2), // Borda arredondada
       ),
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.only(
+        top: 2,
+        bottom: 2,
+        left: 4,
+        right: 4),
       child: Text(
         plateNumber,
-        style: TextStyle(
-          color: const Color(0xFF004F9F), // Azul escuro
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
+        style: const TextStyle(
+          color: Color(0xFF004F9F), // Azul escuro
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
         ),
       ),
     );

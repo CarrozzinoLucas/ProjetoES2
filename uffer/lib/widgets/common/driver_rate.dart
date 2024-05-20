@@ -7,7 +7,6 @@ class DriverRateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -15,41 +14,42 @@ class DriverRateWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  width: 60,
-                  height: 60,
+                  width: 56,
+                  height: 56,
                   decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0XFFD9D9D9),
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  // Aqui você pode adicionar uma imagem se desejar
                 ),
-                SizedBox(height: 8),
-                Text(
-                  'Nome',
+                const SizedBox(height: 8),
+                const Text(
+                  'Beltrano',
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       fontWeight: FontWeight.normal,
                       color: Color(0xFF44474E)),
                 ),
               ],
             ),
+            const SizedBox(height: 8),
             Container(
               decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(8),
+                color: const Color(0XFFEFEFF6),
+                borderRadius: BorderRadius.circular(16),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: Row(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
                     Icons.star,
-                    color: Colors.yellow,
+                    color: Color(0XFFEFCC81),
+                    size: 20,
                   ),
                   SizedBox(width: 4),
                   Text(
                     '4,5',
-                    style: TextStyle(fontSize: 16, color: Colors.black),
+                    style: TextStyle(fontSize: 14, color: Color(0XFF44474E)),
                   ),
                 ],
               ),

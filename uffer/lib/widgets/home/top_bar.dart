@@ -1,22 +1,28 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class TopBarWidget extends StatelessWidget {
-  const TopBarWidget({Key? key}) : super(key: key);
+  const TopBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    String firstName =
+        user != null ? _getFirstName(user.displayName ?? 'Usuário') : 'Usuário';
+
     return Container(
       height: 160,
       color: const Color(0xFF004F9F),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           Row(
             children: [
-              SizedBox(width: 24),
-              CircleAvatar(
+              const SizedBox(width: 24),
+              const CircleAvatar(
                 radius: 30,
                 backgroundColor: Colors.white,
                 child: Icon(
@@ -25,20 +31,20 @@ class TopBarWidget extends StatelessWidget {
                   color: Color(0xFF004F9F),
                 ),
               ),
-              SizedBox(width: 24),
+              const SizedBox(width: 24),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Olá,', 
+                  const Text(
+                    'Olá,',
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.white,
                     ),
                   ),
                   Text(
-                    'Fulano!', 
-                    style: TextStyle(
+                    '$firstName!',
+                    style: const TextStyle(
                       fontSize: 24,
                       color: Colors.white,
                     ),
@@ -50,5 +56,9 @@ class TopBarWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _getFirstName(String fullName) {
+    return fullName.split(' ')[0];
   }
 }

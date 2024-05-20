@@ -11,7 +11,7 @@ class RouteInfo extends StatelessWidget {
         color: Color(0xFFEFEFF6), // Cor de fundo
         border: Border.all(
           color: Color(0xFFD9D9D9), // Cor da borda
-          width: 3, // Largura da borda
+          width: 1, // Largura da borda
         ),
         borderRadius: BorderRadius.circular(12), // Borda arredondada
       ),
@@ -19,10 +19,11 @@ class RouteInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Rota da carona até o momento', // Texto no topo
+            'Rota até o momento', // Texto no topo
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
+              color: Color(0XFF44474E)
             ),
           ),
           SizedBox(height: 16), // Espaço entre os textos
@@ -39,7 +40,7 @@ class RouteInfo extends StatelessWidget {
               children: [
                 // Linha vertical
                 Container(
-                  width: 2,
+                  width: 1,
                   height: 80, // Altura da linha
                   color: Colors.grey, // Cor da linha
                   margin: EdgeInsets.only(right: 16), // Margem à direita
@@ -77,34 +78,33 @@ class RouteInfo extends StatelessWidget {
               ],
             ),
           ),
-
-          // Container para o ícone de pessoa e o texto "2/5"
           Row(
             children: [
               Icon(
-                Icons.person_outlined, // Ícone de pessoa
-                color: Color(0xFF004F9F), // Cor do ícone
+                Icons.person_outlined, 
+                color: Color(0xFF004F9F),
               ),
-              SizedBox(width: 8), // Espaço entre o ícone e o texto
+              SizedBox(width: 8), 
               Text(
-                '2/5', // Texto "2/5"
+                '2/5', 
                 style: TextStyle(
-                  color: Color(0xFF74777F), // Cor do texto
+                  color: Color(0xFF74777F), 
                 ),
               ),
             ],
           ),
+          SizedBox(height: 8),
           Row(
             children: [
               Icon(
-                Icons.access_time, // Ícone de pessoa
-                color: Color(0xFF004F9F), // Cor do ícone
+                Icons.access_time, 
+                color: Color(0xFF004F9F),
               ),
-              SizedBox(width: 8), // Espaço entre o ícone e o texto
+              SizedBox(width: 8), 
               Text(
-                '8:40', // Texto "2/5"
+                '8:40', 
                 style: TextStyle(
-                  color: Color(0xFF74777F), // Cor do texto
+                  color: Color(0xFF74777F), 
                 ),
               ),
             ],
