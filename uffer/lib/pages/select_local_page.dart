@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:uffer/pages/confirm_local_page.dart';
+import 'package:uffer/pages/group_chat_page.dart';
+import 'package:uffer/pages/list_saved_places_page.dart';
 import 'package:uffer/widgets/common/action_painel.dart';
 import 'package:uffer/widgets/common/destination_input_widget.dart';
 import 'package:uffer/widgets/common/map_widget.dart';
@@ -40,7 +42,7 @@ class _SelectLocalPageState extends State<SelectLocalPage> {
     _destinationController.dispose();
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,8 +98,15 @@ class _SelectLocalPageState extends State<SelectLocalPage> {
                         leftIconData: Icons.place_outlined,
                         rightIconData: Icons.arrow_forward_ios),
                   ],
-                  onPressed: () {
-                    print('Painel pressionado!');
+                  onPressed: () => {
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            const ListSavedPlacesPage(),
+                        transitionDuration: Duration.zero,
+                      ),
+                    )
                   },
                 ),
                 const SizedBox(
