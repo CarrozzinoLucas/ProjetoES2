@@ -15,14 +15,13 @@ class AppIcon extends StatelessWidget {
     return Container(
       height: 56,
       decoration: BoxDecoration(
-        shape: BoxShape.circle, 
-        border: Border.all(
-            color: const Color(0xFF004F9F), width: 2), 
+        shape: BoxShape.circle,
+        border: Border.all(color: const Color(0xFF004F9F), width: 2),
       ),
       child: Center(
         child: Icon(
           symbol,
-          size: 32, 
+          size: 32,
           color: color ?? Theme.of(context).primaryColor,
         ),
       ),
@@ -36,9 +35,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
-      backgroundColor:
-          Colors.transparent, // Define a cor de fundo como transparente
-
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.white,
+      indicatorColor: Colors.white,
       destinations: const [
         NavigationDestination(
           icon: AppIcon(symbol: Symbols.home),
