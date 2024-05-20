@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:uffer/pages/home_page.dart';
 import 'package:uffer/pages/ride_not_found_page.dart';
+import 'package:uffer/pages/search_rides_page.dart';
+import 'package:uffer/pages/select_local_page.dart';
 import 'package:uffer/widgets/common/action_painel.dart';
 import 'package:uffer/widgets/common/destination_input_widget.dart';
 import 'package:uffer/widgets/common/map_widget.dart';
@@ -46,7 +49,7 @@ class AddSavedPlacePage extends StatelessWidget {
                           PageRouteBuilder(
                             pageBuilder:
                                 (context, animation, secondaryAnimation) =>
-                                    const RideNotFoundPage(),
+                                    const SelectLocalPage(),
                             transitionDuration: Duration.zero,
                           ),
                         );
