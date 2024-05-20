@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:uffer/pages/auth.dart';
 import 'package:uffer/widgets/common/action_painel.dart';
 import 'package:uffer/widgets/home/banner.dart';
@@ -22,6 +23,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Color(0xFF004F9F),
+        statusBarBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.white));
+
     return Scaffold(
       body: ListView(
         children: [
