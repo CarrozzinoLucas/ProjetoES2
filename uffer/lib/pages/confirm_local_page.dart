@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:uffer/pages/list_saved_places_page.dart';
+import 'package:uffer/pages/driver_on_way_page.dart';
 import 'package:uffer/pages/ride_not_found_page.dart';
 import 'package:uffer/widgets/common/blue_button.dart';
 import 'package:uffer/widgets/common/destination_input_widget.dart';
@@ -40,7 +40,7 @@ class ConfirmLocalPage extends StatelessWidget {
                     context,
                     PageRouteBuilder(
                       pageBuilder: (context, animation, secondaryAnimation) =>
-                          const RideNotFoundPage(),
+                          const DriverOnWayPage(),
                       transitionDuration: Duration.zero,
                     ),
                   )
