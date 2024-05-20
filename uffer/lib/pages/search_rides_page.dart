@@ -9,13 +9,21 @@ import 'package:uffer/widgets/common/top_back_button.dart';
 import 'package:uffer/widgets/common/draggable_widget.dart';
 import 'package:uffer/widgets/search_rides/passenger_popup.dart';
 
-class SearchRidesPage extends StatelessWidget {
+class SearchRidesPage extends StatefulWidget {
+  const SearchRidesPage({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _SearchRidesPageState createState() => _SearchRidesPageState();
+}
+
+class _SearchRidesPageState extends State<SearchRidesPage> {
   final initialCameraPosition = const CameraPosition(
     target: LatLng(-22.90152056342056, -43.12411775370665),
     zoom: 11.0,
   );
 
-  const SearchRidesPage({super.key});
+  int _passengerCount = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -74,25 +82,36 @@ class SearchRidesPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   RoundedRectangleButton(
-                    icon: const Icon(Icons.calendar_month, color: Color(0XFF004F9F)),
+                    icon: const Icon(Icons.calendar_month,
+                        color: Color(0XFF004F9F)),
                     onPressed: () {},
-                    label: 'Agendar',
+                    label: 'Agora',
                   ),
                   const SizedBox(
                     width: 32,
                   ),
                   RoundedRectangleButton(
-                    icon: const Icon(Icons.person_add_outlined, color: Color(0XFF004F9F),),
+                    icon: const Icon(
+                      Icons.person_add_outlined,
+                      color: Color(0XFF004F9F),
+                    ),
                     onPressed: () {
-                      // Show the PassengerPopup dialog
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
                           return const PassengerPopup();
                         },
-                      );
+                      ).then((value) {
+                        if (value != null) {
+                          setState(() {
+                            _passengerCount = value;
+                          });
+                        }
+                      });
                     },
-                    label: 'Passageiros',
+                    label: _passengerCount > 1
+                        ? '$_passengerCount passageiros' 
+                        : 'Só você', 
                   ),
                 ],
               ),
