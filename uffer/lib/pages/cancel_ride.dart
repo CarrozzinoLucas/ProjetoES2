@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:uffer/pages/canceled_ride_page.dart';
 import 'package:uffer/pages/list_saved_places_page.dart';
 import 'package:uffer/widgets/common/action_painel.dart';
 import 'package:uffer/widgets/common/blue_button.dart';
@@ -24,24 +25,16 @@ class CancelRidePage extends StatelessWidget {
           MapWidget(initialCameraPosition: initialCameraPosition),
           const TopBackButton(),
           DraggableWidget(
-              initialChildSize: 0.8,
-              minChildSize: 0.3,
-              maxChildSize: 0.8,
+            initialChildSize: 0.8,
+            minChildSize: 0.3,
+            maxChildSize: 0.8,
             body: Column(children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   RoundedSquareButton(
-                    innerLabel: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.not_interested,
-                          color: Color(0XFF004F9F),
-                        ),
-                      ],
-                    ),
+                    iconData: Icons.not_interested,
                     onPressed: () {},
                   ),
                 ],
@@ -55,7 +48,9 @@ class CancelRidePage extends StatelessWidget {
                     'Gostaria de cancelar a carona?',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 8,),
+                  SizedBox(
+                    height: 8,
+                  ),
                   Text('Nos conte o que aconteceu'),
                 ],
               ),
@@ -80,8 +75,7 @@ class CancelRidePage extends StatelessWidget {
                       label: 'Motorista não corresponde à descrição',
                       rightIconData: Icons.radio_button_off),
                   Option(
-                      label: 'Outro',
-                      rightIconData: Icons.arrow_forward_ios),
+                      label: 'Outro', rightIconData: Icons.arrow_forward_ios),
                 ],
                 onPressed: () {
                   print('Painel pressionado!');
@@ -95,12 +89,12 @@ class CancelRidePage extends StatelessWidget {
                     context,
                     PageRouteBuilder(
                       pageBuilder: (context, animation, secondaryAnimation) =>
-                          const ListSavedPlacesPage(),
+                          const CanceledRidePage(),
                       transitionDuration: Duration.zero,
                     ),
                   )
                 },
-                )
+              )
             ]),
           ),
         ],
