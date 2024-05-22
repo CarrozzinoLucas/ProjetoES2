@@ -1,10 +1,10 @@
-class SolocitacaoCarona {
+class SolicitacaoCarona {
   int trajetoId;
   int usuarioId;
   int quandtidadeDePassageiros;
   bool emAberto;
 
-  SolocitacaoCarona(this.trajetoId, this.usuarioId,
+  SolicitacaoCarona(this.trajetoId, this.usuarioId,
       this.quandtidadeDePassageiros, this.emAberto);
 
   Map<String, dynamic> toJson() {
@@ -14,5 +14,14 @@ class SolocitacaoCarona {
       "quandtidadeDePassageiros": quandtidadeDePassageiros,
       "emAberto": emAberto,
     };
+  }
+
+  factory SolicitacaoCarona.fromJson(json){
+    return SolicitacaoCarona(
+        json["trajetoId"],
+        json["usuarioId"],
+        json["quandtidadeDePassageiros"],
+        json["emAberto"]
+    );
   }
 }

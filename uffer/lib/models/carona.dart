@@ -33,4 +33,18 @@ class Carona {
       "trajetoId": trajetoId
     };
   }
+
+  factory Carona.fromJson(json) {
+    return Carona(
+      json["dataHoraChegada"],
+      json["dataHoraSaida"],
+      json["assentosDisponiveis"],
+      json["emAberto"],
+      json["retorno"],
+      json["apenasSoliciticao"],
+      json["detalhesAdicionais"],
+      json["motoristaId"],
+      json["trajetoId"],
+    );
+  }
 }

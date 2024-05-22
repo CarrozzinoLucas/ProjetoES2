@@ -19,4 +19,15 @@ class Veiculo {
       "motoristaId": motoristaId
     };
   }
+
+  factory Veiculo.fromJson(json){
+    return Veiculo(
+        json["placa"],
+        json["cor"],
+        json["modelo"],
+        json["ano"],
+        json["marca"],
+        json["motoristaId"]
+    );
+  }
 }

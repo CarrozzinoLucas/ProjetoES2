@@ -9,7 +9,15 @@ class Favorito {
     return {
       "nome": nome,
       "localId": localId,
-      "usuarioId": usuarioId,
+      "usuarioId": usuarioId
     };
+  }
+
+  factory Favorito.fromJson(json){
+    return Favorito(
+        json["nome"],
+        json["localId"],
+        json["usuarioId"]
+    );
   }
 }

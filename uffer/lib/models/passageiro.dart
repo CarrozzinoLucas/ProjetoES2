@@ -11,4 +11,11 @@ class Passageiro {
     };
   }
 
+  factory Passageiro.fromJson(json){
+    return Passageiro(
+        json["caronaId"],
+        json["passageiroId"]
+    );
+  }
+
 }

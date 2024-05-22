@@ -7,4 +7,6 @@ class Usuario {
 
   Map<String, dynamic> toJson() => {"nome": nome, "email": email, "foto": foto};
 
+  factory Usuario.fromJson(json)  => Usuario(json["nome"], json["email"], json["foto"]);
+
 }

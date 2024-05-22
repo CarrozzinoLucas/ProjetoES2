@@ -6,4 +6,5 @@ class Motorista {
 
   Map<String, dynamic> toJson() => {"cnh": cnh, "usuarioId": usuarioId};
 
+  factory Motorista.fromJson(json) => Motorista(json["cnh"], json["usuarioId"]);
 }

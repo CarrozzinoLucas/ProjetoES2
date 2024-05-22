@@ -12,4 +12,12 @@ class Parada {
       "trajetoId": trajetoId,
     };
   }
+
+  factory Parada.fromJson(json){
+    return Parada(
+        json["posicao"],
+        json["localId"],
+        json["trajetoId"]
+    );
+  }
 }

@@ -14,4 +14,13 @@ class Local {
       "localPadraoId": localPadraoId,
     };
   }
+
+  factory Local.fromJson(json) {
+    return Local(
+      json["coordenadas"],
+      json["favoritoId"],
+      json["paradaId"],
+      json["localPadraoId"]
+    );
+  }
 }
