@@ -23,22 +23,21 @@ class DestinationInput extends StatelessWidget {
     TextEditingController controller_ = TextEditingController();
 
     return Container(
-      width: 250,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100.0),
-        border: Border.all(color: const Color(0xFFE7E8EE)),
-        color: const Color(0xFFF9FAFB),
-      ),
+      constraints: const BoxConstraints(maxWidth: 600),
       child: TextField(
         controller: controller_,
         focusNode: focusNode, // Definindo o focusNode
         onSubmitted: onSubmitted,
         onTap: onTap,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(vertical: 8.0),
+          fillColor: const Color(0xFFF9FAFB),
+          contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
           labelText: label,
-          hintText: '',
-          border: InputBorder.none,
+          enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Color(0xFFE7E8EE)),
+              borderRadius: BorderRadius.all(Radius.circular(100))),
+          border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(100))),
           prefixIcon: prefixIconData != null
               ? Icon(
                   prefixIconData,
@@ -46,11 +45,6 @@ class DestinationInput extends StatelessWidget {
                   color: const Color(0XFF79747E),
                 )
               : null,
-          prefixIconConstraints: const BoxConstraints(minWidth: 64),
-          // floatingLabelBehavior: FloatingLabelBehavior.always,
-          labelStyle: const TextStyle(
-              // height: 2,
-              ),
         ),
       ),
     );
