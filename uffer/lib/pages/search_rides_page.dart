@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:uffer/pages/select_local_page.dart';
 import 'package:uffer/widgets/common/action_painel.dart';
@@ -36,11 +37,11 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
           DraggableWidget(
             initialChildSize: 0.65,
             minChildSize: 0.3,
-            maxChildSize: 0.65,
-            body: Column(children: [
+            maxChildSize: 0.85,
+            body:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Row(children: [
-                Container(
-                  margin: const EdgeInsets.only(right: 16),
+                Expanded(
                   child: DestinationInput(
                     label: 'Origem',
                     prefixIconData: Icons.circle,
@@ -57,28 +58,26 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
                     },
                   ),
                 ),
-                const SizedBox(height: 24, width: 24)
+                const SizedBox(width: 48)
+              ]),
+              const SizedBox(height: 16),
+              const Row(children: [
+                Expanded(
+                  child: DestinationInput(
+                    label: 'Destino',
+                    prefixIconData: Icons.circle_outlined,
+                  ),
+                ),
+                IconButton(
+                    onPressed: null,
+                    icon: Icon(
+                      Icons.add,
+                      color: Color(0XFF79747E),
+                    ),
+                    iconSize: 24),
               ]),
               const SizedBox(height: 24),
-              const Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    DestinationInput(
-                      label: 'Destino',
-                      prefixIconData: Icons.circle_outlined,
-                    ),
-                    IconButton(
-                        onPressed: null,
-                        icon: Icon(
-                          Icons.add,
-                          color: Color(0XFF79747E),
-                        ),
-                        iconSize: 24),
-                  ]),
-              const SizedBox(height: 24),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   RoundedRectangleButton(
@@ -87,9 +86,7 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
                     onPressed: () {},
                     label: 'Agora',
                   ),
-                  const SizedBox(
-                    width: 32,
-                  ),
+                  const SizedBox(width: 16),
                   RoundedRectangleButton(
                     icon: const Icon(
                       Icons.person_add_outlined,
@@ -110,35 +107,28 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
                       });
                     },
                     label: _passengerCount > 1
-                        ? '$_passengerCount passageiros' 
-                        : 'Só você', 
+                        ? '$_passengerCount passageiros'
+                        : 'Só você',
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 23,
-              ),
+              const SizedBox(height: 23),
               ActionPainel(
                 options: const [
                   Option(
                       label: 'Icaraí - UFF Praia Vermelha',
                       sublabel: '8:30h, 1 passageiro',
-                      leftIconData: Icons.directions_car_filled_outlined,
                       rightIconData: Icons.arrow_forward_ios),
                   Option(
                       label: 'São Francisco - UFF Valonguinho',
                       sublabel: '10:30h, 2 passageiros',
-                      leftIconData: Icons.directions_car_filled_outlined,
                       rightIconData: Icons.arrow_forward_ios),
                   Option(
                       label: 'Camboinhas - UFF Gragoatá',
                       sublabel: '6:30h, 1 passageiro',
-                      leftIconData: Icons.directions_car_filled_outlined,
                       rightIconData: Icons.arrow_forward_ios),
                 ],
-                onPressed: () {
-                  print('Painel pressionado!');
-                },
+                onPressed: () {},
               ),
             ]),
           ),
