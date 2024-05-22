@@ -80,35 +80,39 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  RoundedRectangleButton(
-                    icon: const Icon(Icons.calendar_month,
-                        color: Color(0XFF004F9F)),
-                    onPressed: () {},
-                    label: 'Agora',
+                  Expanded(
+                    child: RoundedRectangleButton(
+                      icon: const Icon(Icons.calendar_month,
+                          color: Color(0XFF004F9F)),
+                      onPressed: () {},
+                      label: 'Agora',
+                    ),
                   ),
                   const SizedBox(width: 16),
-                  RoundedRectangleButton(
-                    icon: const Icon(
-                      Icons.person_add_outlined,
-                      color: Color(0XFF004F9F),
+                  Expanded(
+                    child: RoundedRectangleButton(
+                      icon: const Icon(
+                        Icons.person_add_outlined,
+                        color: Color(0XFF004F9F),
+                      ),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return const PassengerPopup();
+                          },
+                        ).then((value) {
+                          if (value != null) {
+                            setState(() {
+                              _passengerCount = value;
+                            });
+                          }
+                        });
+                      },
+                      label: _passengerCount > 1
+                          ? '$_passengerCount passageiros'
+                          : 'Só você',
                     ),
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const PassengerPopup();
-                        },
-                      ).then((value) {
-                        if (value != null) {
-                          setState(() {
-                            _passengerCount = value;
-                          });
-                        }
-                      });
-                    },
-                    label: _passengerCount > 1
-                        ? '$_passengerCount passageiros'
-                        : 'Só você',
                   ),
                 ],
               ),
