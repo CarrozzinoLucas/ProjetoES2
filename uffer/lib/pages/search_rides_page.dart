@@ -8,7 +8,9 @@ import 'package:uffer/widgets/common/map_widget.dart';
 import 'package:uffer/widgets/common/rounded_rectangle_button.dart';
 import 'package:uffer/widgets/common/top_back_button.dart';
 import 'package:uffer/widgets/common/draggable_widget.dart';
+import 'package:uffer/widgets/search_rides/clock_popup.dart';
 import 'package:uffer/widgets/search_rides/passenger_popup.dart';
+import 'package:uffer/widgets/search_rides/schedule_popup.dart';
 
 class SearchRidesPage extends StatefulWidget {
   const SearchRidesPage({super.key});
@@ -25,6 +27,8 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
   );
 
   int _passengerCount = 1;
+  TimeOfDay? _selectedTime;
+  DateTime? _selectedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +87,24 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
                   RoundedRectangleButton(
                     icon: const Icon(Icons.calendar_month,
                         color: Color(0XFF004F9F)),
-                    onPressed: () {},
-                    label: 'Agora',
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const SchedulePopup();
+                        },
+                      ).then((value) {
+                        if (value != null && value is Map) {
+                          setState(() {
+                            _selectedDate = value['date'];
+                            _selectedTime = value['time'];
+                          });
+                        }
+                      });
+                    },
+                    label: (_selectedDate != null && _selectedTime != null)
+                        ? '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}, ${_selectedTime!.format(context)}'
+                        : 'Agora',
                   ),
                   const SizedBox(width: 16),
                   RoundedRectangleButton(
