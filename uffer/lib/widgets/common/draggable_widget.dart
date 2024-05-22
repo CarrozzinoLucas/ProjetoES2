@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class DraggableWidget extends StatelessWidget {
   final String? title;
   final String? subtitle;
@@ -21,7 +20,6 @@ class DraggableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return GestureDetector(
       child: DraggableScrollableSheet(
         initialChildSize: initialChildSize,
@@ -29,10 +27,7 @@ class DraggableWidget extends StatelessWidget {
         maxChildSize: maxChildSize,
         builder: (BuildContext context, ScrollController scrollController) {
           return ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(40),
-              topRight: Radius.circular(40),
-            ),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
             child: Container(
               color: Colors.white,
               child: ListView(
@@ -42,22 +37,10 @@ class DraggableWidget extends StatelessWidget {
                 ),
                 controller: scrollController,
                 children: [
-                  // Drag Handle
-                  Center(
-                    child: Container(
-                      width: 40,
-                      height: 6,
-                      margin: const EdgeInsets.symmetric(vertical: 4),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(3),
-                      ),
-                    ),
-                  ),
+                  const DragHandle(),
                   // Title & Subtitle
                   SizedBox(
                     height: 32, // space between header and body
-                    width: double.infinity,
                     child: Column(
                       children: [
                         if (title != null) ...[
@@ -91,19 +74,34 @@ class DraggableWidget extends StatelessWidget {
                       left: 24,
                       bottom: 24,
                     ), // body padding
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Body
-                        body ?? const SizedBox.shrink(),
-                      ],
-                    ),
+                    child: body ?? const SizedBox.shrink(),
                   ),
                 ],
               ),
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class DragHandle extends StatelessWidget {
+  const DragHandle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        width: 40,
+        height: 6,
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        decoration: BoxDecoration(
+          color: Colors.grey[300],
+          borderRadius: BorderRadius.circular(3),
+        ),
       ),
     );
   }
