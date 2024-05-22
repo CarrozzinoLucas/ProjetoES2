@@ -19,4 +19,18 @@ class Carona {
       this.detalhesAdicionais,
       this.motoristaId,
       this.trajetoId);
+
+  Map<String, dynamic> toJson() {
+    return {
+      "dataHoraChegada": dataHoraChegada,
+      "dataHoraSaida": dataHoraSaida,
+      "assentosDisponiveis": assentosDisponiveis,
+      "emAberto": emAberto,
+      "retorno": retorno,
+      "apenasSoliciticao": apenasSoliciticao,
+      "detalhesAdicionais": detalhesAdicionais,
+      "motoristaId": motoristaId,
+      "trajetoId": trajetoId
+    };
+  }
 }

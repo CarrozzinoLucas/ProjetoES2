@@ -3,9 +3,15 @@ class Local {
   int favoritoId;
   int paradaId;
   int localPadraoId;
-  int origemId;
-  int destinoId;
 
-  Local(this.coordenadas, this.favoritoId, this.paradaId, this.localPadraoId,
-      this.origemId, this.destinoId);
+  Local(this.coordenadas, this.favoritoId, this.paradaId, this.localPadraoId);
+
+  Map<String, dynamic> toJson() {
+    return {
+      "coordenadas": coordenadas,
+      "favoritoId": favoritoId,
+      "paradaId": paradaId,
+      "localPadraoId": localPadraoId,
+    };
+  }
 }

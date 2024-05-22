@@ -4,4 +4,12 @@ class Favorito {
   int usuarioId;
 
   Favorito(this.nome, this.localId, this.usuarioId);
+
+  Map<String, dynamic> toJson() {
+    return {
+      "nome": nome,
+      "localId": localId,
+      "usuarioId": usuarioId,
+    };
+  }
 }

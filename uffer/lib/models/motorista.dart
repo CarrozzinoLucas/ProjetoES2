@@ -3,4 +3,7 @@ class Motorista {
   final int usuarioId;
 
   Motorista(this.cnh, this.usuarioId);
+
+  Map<String, dynamic> toJson() => {"cnh": cnh, "usuarioId": usuarioId};
+
 }
