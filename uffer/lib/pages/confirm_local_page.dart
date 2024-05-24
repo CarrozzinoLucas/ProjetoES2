@@ -9,14 +9,16 @@ import 'package:uffer/widgets/common/top_back_button.dart';
 import 'package:uffer/widgets/common/draggable_widget.dart';
 
 class ConfirmLocalPage extends StatelessWidget {
-  final initialCameraPosition = const CameraPosition(
-    target: LatLng(-22.90152056342056, -43.12411775370665),
-    zoom: 20.0,
-  );
-  const ConfirmLocalPage({super.key});
+  final LatLng location;
+  const ConfirmLocalPage({required this.location, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final initialCameraPosition = CameraPosition(
+      target: location,
+      zoom: 20.0,
+    );
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: Stack(children: [
@@ -31,7 +33,7 @@ class ConfirmLocalPage extends StatelessWidget {
               const DestinationInput(
                 label: 'Endereço',
                 prefixIconData: Icons.circle,
-                ),
+              ),
               const SizedBox(height: 24),
               BlueButton(
                 buttonLabel: 'Confirmar Local',
