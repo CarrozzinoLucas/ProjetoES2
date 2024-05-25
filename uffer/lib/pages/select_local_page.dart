@@ -16,13 +16,12 @@ class SelectLocalPage extends StatefulWidget {
   _SelectLocalPageState createState() => _SelectLocalPageState();
 }
 
- String _truncateString(String text, {int maxLength = 30}) {
-    if (text.length > maxLength) {
-      return '${text.substring(0, maxLength)}...';
-    }
-    return text;
+String _truncateString(String text, {int maxLength = 30}) {
+  if (text.length > maxLength) {
+    return '${text.substring(0, maxLength)}...';
   }
-
+  return text;
+}
 
 class _SelectLocalPageState extends State<SelectLocalPage> {
   final initialCameraPosition = const CameraPosition(
@@ -112,7 +111,10 @@ class _SelectLocalPageState extends State<SelectLocalPage> {
                           context,
                           PageRouteBuilder(
                             pageBuilder: (context, animation, secondaryAnimation) =>
-                                const ConfirmLocalPage(location: LatLng(-22.90152056342056, -43.12411775370665)),
+                                ConfirmLocalPage(
+                                  location: LatLng(-22.90152056342056, -43.12411775370665),
+                                  address: value, 
+                                ),
                             transitionDuration: Duration.zero,
                           ),
                         );
@@ -161,7 +163,10 @@ class _SelectLocalPageState extends State<SelectLocalPage> {
                             context,
                             PageRouteBuilder(
                               pageBuilder: (context, animation, secondaryAnimation) =>
-                                  ConfirmLocalPage(location: location),
+                                  ConfirmLocalPage(
+                                    location: location,
+                                    address: suggestion.description ?? '', // Passando o endereço
+                                  ),
                               transitionDuration: Duration.zero,
                             ),
                           );

@@ -10,7 +10,13 @@ import 'package:uffer/widgets/common/draggable_widget.dart';
 
 class ConfirmLocalPage extends StatelessWidget {
   final LatLng location;
-  const ConfirmLocalPage({required this.location, Key? key}) : super(key: key);
+  final String address; 
+
+  const ConfirmLocalPage({
+    Key? key,
+    required this.location,
+    required this.address, 
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +24,7 @@ class ConfirmLocalPage extends StatelessWidget {
       target: location,
       zoom: 20.0,
     );
+    TextEditingController _addressController = TextEditingController(text: address);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -30,9 +37,10 @@ class ConfirmLocalPage extends StatelessWidget {
           maxChildSize: 0.3,
           body: Column(
             children: [
-              const DestinationInput(
+              DestinationInput(
                 label: 'Endereço',
                 prefixIconData: Icons.circle,
+                controller: _addressController,
               ),
               const SizedBox(height: 24),
               BlueButton(
