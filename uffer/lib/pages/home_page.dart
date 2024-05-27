@@ -30,6 +30,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       body: ListView(
+        padding: const EdgeInsets.all(0),
         children: [
           const TopBarWidget(),
           Padding(
