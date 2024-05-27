@@ -30,6 +30,7 @@ class DestinationInput extends StatelessWidget {
         onSubmitted: onSubmitted,
         onTap: onTap,
         decoration: InputDecoration(
+          filled: true,
           fillColor: const Color(0xFFF9FAFB),
           contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
           labelText: label,

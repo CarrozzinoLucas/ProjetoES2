@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:uffer/widgets/common/star_rate.dart';
 
-class DriverRateWidget extends StatelessWidget {
-  const DriverRateWidget({Key? key}) : super(key: key);
+class UserPhotoAndRateWidget extends StatelessWidget {
+  final String name;
+  final Color? starRateColor;
+
+  const UserPhotoAndRateWidget({
+    Key? key,
+    required this.name,
+    this.starRateColor, // Removido o valor padrão null
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +30,9 @@ class DriverRateWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                const Text(
-                  'Beltrano',
-                  style: TextStyle(
+                Text(
+                  name,
+                  style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.normal,
                       color: Color(0xFF44474E)),
@@ -32,27 +40,9 @@ class DriverRateWidget extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 8),
-            Container(
-              decoration: BoxDecoration(
-                color: const Color(0XFFEFEFF6),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.star,
-                    color: Color(0XFFEFCC81),
-                    size: 20,
-                  ),
-                  SizedBox(width: 4),
-                  Text(
-                    '4,5',
-                    style: TextStyle(fontSize: 14, color: Color(0XFF44474E)),
-                  ),
-                ],
-              ),
+            StarRate(
+              color: starRateColor ?? const Color(0XFFEFCC81), // Usando a cor padrão do StarRate se não for especificada
+              rating: 4.5,
             ),
           ],
         ),
