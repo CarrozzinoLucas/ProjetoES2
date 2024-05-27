@@ -36,11 +36,13 @@ class DriverOnWayPage extends StatelessWidget {
                 const Row(
                     // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      DriverStatusInfoWidget(
-                          carInfo: 'Toyota Corolla, Preto',
+                      InfoHeader(
+                          title: 'O motorista está a caminho',
+                          subtitle: 'Toyota Corolla, Preto',
                           plateNumber: 'ABJ012YU'),
                       Spacer(),
-                      DriverRateWidget()
+                      UserPhotoAndRateWidget(name: 'Beltrano',
+                      starRateColor: Color(0xff66B2FF))
                     ]),
                 const SizedBox(height: 32),
                 Center(
