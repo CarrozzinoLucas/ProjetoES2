@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:uffer/pages/offer_ride_page.dart';
 import 'package:uffer/pages/search_rides_page.dart';
 
 class ServiceSection extends StatelessWidget {
@@ -48,7 +49,16 @@ class ServiceSection extends StatelessWidget {
                   color: Colors.white,
                 ),
                 label: "Oferecer Carona",
-                onPressed: () => {},
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          const OfferRidePage(),
+                      transitionDuration: Duration.zero,
+                    ),
+                  )
+                },
               ),
             ),
           ],
