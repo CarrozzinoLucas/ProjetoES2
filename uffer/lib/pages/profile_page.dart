@@ -15,7 +15,7 @@ Future<void> signOut() async {
 
 Widget _signOutButton(BuildContext context) {
   return ActionPainel(
-    options: const [Option(label: 'Sign Out', rightIconData: Icons.close)],
+    options: const [Option(label: 'Sair', rightIconData: Icons.close)],
     onPressed: () async {
       await signOut();
       Navigator.pop(context);
@@ -30,6 +30,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
+        padding: const EdgeInsets.all(0),
         children: [
           const TopBarWidget(),
           Padding(
