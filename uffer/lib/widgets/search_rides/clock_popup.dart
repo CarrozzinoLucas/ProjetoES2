@@ -35,7 +35,6 @@ class _ClockPopupState extends State<ClockPopup> {
           ),
           const SizedBox(height: 16),
           Text('Selected time: ${_selectedTime.format(context)}'),
-          // Adicione quaisquer informações adicionais que você deseja aqui
           const Text('Informações adicionais'),
         ],
       ),

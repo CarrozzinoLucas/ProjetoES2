@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:uffer/widgets/common/rounded_rectangle_button.dart';
+import 'package:uffer/widgets/common/rounded_square_button.dart';
 import 'date_picker_popup.dart';
 import 'clock_popup.dart';
 
@@ -44,26 +46,26 @@ class _SchedulePopupState extends State<SchedulePopup> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: Colors.white,
       title: const Text('Agende sua carona'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ElevatedButton(
+          RoundedRectangleButton(
+            icon: const Icon(Icons.calendar_month_outlined,
+                color: Color(0xFF004F9F)),
             onPressed: () => _selectDate(context),
-            child: Text(
-              _selectedDate != null
-                  ? '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}'
-                  : 'Escolher dia',
-            ),
+            label: _selectedDate != null
+                ? '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}'
+                : 'Escolher dia',
           ),
           const SizedBox(height: 16),
-          ElevatedButton(
+          RoundedRectangleButton(
+            icon: const Icon(Icons.access_time, color: Color(0xFF004F9F)),
             onPressed: () => _selectTime(context),
-            child: Text(
-              _selectedTime != null
-                  ? _selectedTime!.format(context)
-                  : 'Escolher hora',
-            ),
+            label: _selectedTime != null
+                ? _selectedTime!.format(context)
+                : 'Escolher hora',
           ),
         ],
       ),
