@@ -85,7 +85,7 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   RoundedRectangleButton(
-                    icon: const Icon(Icons.calendar_month,
+                    icon: const Icon(Icons.calendar_month_outlined,
                         color: Color(0XFF004F9F)),
                     onPressed: () {
                       showDialog(
@@ -103,34 +103,32 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
                       });
                     },
                     label: (_selectedDate != null && _selectedTime != null)
-                        ? '${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}, ${_selectedTime!.format(context)}'
+                        ? '${_selectedDate!.day}/${_selectedDate!.month}, ${_selectedTime!.format(context)}'
                         : 'Agora',
                   ),
                   const SizedBox(width: 16),
-                  Expanded(
-                    child: RoundedRectangleButton(
-                      icon: const Icon(
-                        Icons.person_add_outlined,
-                        color: Color(0XFF004F9F),
-                      ),
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return const PassengerPopup();
-                          },
-                        ).then((value) {
-                          if (value != null) {
-                            setState(() {
-                              _passengerCount = value;
-                            });
-                          }
-                        });
-                      },
-                      label: _passengerCount > 1
-                          ? '$_passengerCount passageiros'
-                          : 'Só você',
+                  RoundedRectangleButton(
+                    icon: const Icon(
+                      Icons.person_add_outlined,
+                      color: Color(0XFF004F9F),
                     ),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const PassengerPopup();
+                        },
+                      ).then((value) {
+                        if (value != null) {
+                          setState(() {
+                            _passengerCount = value;
+                          });
+                        }
+                      });
+                    },
+                    label: _passengerCount > 1
+                        ? '$_passengerCount passageiros'
+                        : 'Só você',
                   ),
                 ],
               ),
