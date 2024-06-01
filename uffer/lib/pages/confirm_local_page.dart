@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:uffer/pages/search_rides_page.dart';
 import 'package:uffer/widgets/common/blue_button.dart';
 import 'package:uffer/widgets/common/destination_input_widget.dart';
 import 'package:uffer/widgets/common/map_widget.dart';
 import 'package:uffer/widgets/common/top_back_button.dart';
 import 'package:uffer/widgets/common/draggable_widget.dart';
-import 'package:uffer/pages/driver_on_way_page.dart';
+import 'package:uffer/pages/select_local_page.dart';
 
 class ConfirmLocalPage extends StatefulWidget {
   final LatLng location;
@@ -80,6 +81,14 @@ class _ConfirmLocalPageState extends State<ConfirmLocalPage> {
                 label: 'Endereço',
                 prefixIconData: Icons.circle,
                 controller: _addressController,
+                 onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SelectLocalPage(), // Navegue para SelectLocalPage
+                      ),
+                    );
+                  },
               ),
               const SizedBox(height: 24),
               BlueButton(
@@ -89,7 +98,7 @@ class _ConfirmLocalPageState extends State<ConfirmLocalPage> {
                     context,
                     PageRouteBuilder(
                       pageBuilder: (context, animation, secondaryAnimation) =>
-                          const DriverOnWayPage(),
+                          SearchRidesPage(address: _address ),
                       transitionDuration: Duration.zero,
                     ),
                   )
