@@ -165,7 +165,7 @@ class _SelectLocalPageState extends State<SelectLocalPage> {
                               pageBuilder: (context, animation, secondaryAnimation) =>
                                   ConfirmLocalPage(
                                     location: location,
-                                    address: suggestion.description ?? '', // Passando o endereço
+                                    address: suggestion.description ?? '',
                                   ),
                               transitionDuration: Duration.zero,
                             ),

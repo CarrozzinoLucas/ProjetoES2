@@ -7,7 +7,8 @@ class DestinationInput extends StatelessWidget {
   final void Function()? onTap;
   final void Function(String)? onSubmitted;
   final FocusNode? focusNode;
-  final TextEditingController? controller; // Tornando o controlador opcional
+  final TextEditingController? controller; 
+
 
   const DestinationInput({
     required this.label,
@@ -16,7 +17,7 @@ class DestinationInput extends StatelessWidget {
     this.onTap,
     this.onSubmitted,
     this.focusNode,
-    this.controller, // Adicionando o parâmetro do controlador
+    this.controller, 
     Key? key,
   }) : super(key: key);
 

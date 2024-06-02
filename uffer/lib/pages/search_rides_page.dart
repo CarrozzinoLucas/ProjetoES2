@@ -13,14 +13,25 @@ import 'package:uffer/widgets/search_rides/passenger_popup.dart';
 import 'package:uffer/widgets/search_rides/schedule_popup.dart';
 
 class SearchRidesPage extends StatefulWidget {
-  const SearchRidesPage({super.key});
+  final String? address;
+  const SearchRidesPage({Key? key, this.address}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
+  
   _SearchRidesPageState createState() => _SearchRidesPageState();
 }
 
 class _SearchRidesPageState extends State<SearchRidesPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    _address = widget.address ?? '';
+
+  }
+
+  late String _address;
   final initialCameraPosition = const CameraPosition(
     target: LatLng(-22.90152056342056, -43.12411775370665),
     zoom: 11.0,
@@ -32,6 +43,7 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _addressController = TextEditingController(text: _address);
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: Stack(
@@ -49,6 +61,7 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
                   child: DestinationInput(
                     label: 'Origem',
                     prefixIconData: Icons.circle,
+                    controller: _addressController,
                     onTap: () {
                       Navigator.push(
                         context,
@@ -65,7 +78,7 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
                 const SizedBox(width: 48)
               ]),
               const SizedBox(height: 16),
-              const Row(children: [
+               Row(children: [
                 Expanded(
                   child: DestinationInput(
                     label: 'Destino',
