@@ -12,7 +12,7 @@ class RoundedRectangleButton extends StatelessWidget {
     required this.icon,
     required this.onPressed,
     this.borderRadius = 16.0,
-    this.width = 168,
+    this.width = 180,
     this.height = 56,
     this.label,
     super.key,
@@ -22,40 +22,43 @@ class RoundedRectangleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFFF9FAFB),
-          borderRadius: BorderRadius.circular(borderRadius),
-          border: Border.all(color: const Color(0xFFE7E8EE)),
-        ),
-        child: Padding(
-          padding:
-              const EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 20),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFE7EEFF),
-                    shape: BoxShape.circle,
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFFF9FAFB),
+            borderRadius: BorderRadius.circular(borderRadius),
+            border: Border.all(color: const Color(0xFFE7E8EE)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                Center(
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFE7EEFF),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(child: icon),
                   ),
-                  child: Center(child: icon),
                 ),
-              ),
-              if (label != null)
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Text(
-                    label!,
-                    style: const TextStyle(
-                      color: Color(0XFF44474E),
+                if (label != null)
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        label!,
+                        style: const TextStyle(
+                          color: Color(0XFF44474E),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

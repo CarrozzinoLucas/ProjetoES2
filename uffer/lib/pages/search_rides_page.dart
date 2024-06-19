@@ -8,26 +8,42 @@ import 'package:uffer/widgets/common/map_widget.dart';
 import 'package:uffer/widgets/common/rounded_rectangle_button.dart';
 import 'package:uffer/widgets/common/top_back_button.dart';
 import 'package:uffer/widgets/common/draggable_widget.dart';
+import 'package:uffer/widgets/search_rides/clock_popup.dart';
 import 'package:uffer/widgets/search_rides/passenger_popup.dart';
+import 'package:uffer/widgets/search_rides/schedule_popup.dart';
 
 class SearchRidesPage extends StatefulWidget {
-  const SearchRidesPage({super.key});
+  final String? address;
+  const SearchRidesPage({Key? key, this.address}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
+  
   _SearchRidesPageState createState() => _SearchRidesPageState();
 }
 
 class _SearchRidesPageState extends State<SearchRidesPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    _address = widget.address ?? '';
+
+  }
+
+  late String _address;
   final initialCameraPosition = const CameraPosition(
     target: LatLng(-22.90152056342056, -43.12411775370665),
     zoom: 11.0,
   );
 
   int _passengerCount = 1;
+  TimeOfDay? _selectedTime;
+  DateTime? _selectedDate;
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _addressController = TextEditingController(text: _address);
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: Stack(
@@ -45,6 +61,7 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
                   child: DestinationInput(
                     label: 'Origem',
                     prefixIconData: Icons.circle,
+                    controller: _addressController,
                     onTap: () {
                       Navigator.push(
                         context,
@@ -61,7 +78,7 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
                 const SizedBox(width: 48)
               ]),
               const SizedBox(height: 16),
-              const Row(children: [
+               Row(children: [
                 Expanded(
                   child: DestinationInput(
                     label: 'Destino',
@@ -80,39 +97,51 @@ class _SearchRidesPageState extends State<SearchRidesPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: RoundedRectangleButton(
-                      icon: const Icon(Icons.calendar_month,
-                          color: Color(0XFF004F9F)),
-                      onPressed: () {},
-                      label: 'Agora',
-                    ),
+                  RoundedRectangleButton(
+                    icon: const Icon(Icons.calendar_month_outlined,
+                        color: Color(0XFF004F9F)),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const SchedulePopup();
+                        },
+                      ).then((value) {
+                        if (value != null && value is Map) {
+                          setState(() {
+                            _selectedDate = value['date'];
+                            _selectedTime = value['time'];
+                          });
+                        }
+                      });
+                    },
+                    label: (_selectedDate != null && _selectedTime != null)
+                        ? '${_selectedDate!.day}/${_selectedDate!.month}, ${_selectedTime!.format(context)}'
+                        : 'Agora',
                   ),
                   const SizedBox(width: 16),
-                  Expanded(
-                    child: RoundedRectangleButton(
-                      icon: const Icon(
-                        Icons.person_add_outlined,
-                        color: Color(0XFF004F9F),
-                      ),
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return const PassengerPopup();
-                          },
-                        ).then((value) {
-                          if (value != null) {
-                            setState(() {
-                              _passengerCount = value;
-                            });
-                          }
-                        });
-                      },
-                      label: _passengerCount > 1
-                          ? '$_passengerCount passageiros'
-                          : 'Só você',
+                  RoundedRectangleButton(
+                    icon: const Icon(
+                      Icons.person_add_outlined,
+                      color: Color(0XFF004F9F),
                     ),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const PassengerPopup();
+                        },
+                      ).then((value) {
+                        if (value != null) {
+                          setState(() {
+                            _passengerCount = value;
+                          });
+                        }
+                      });
+                    },
+                    label: _passengerCount > 1
+                        ? '$_passengerCount passageiros'
+                        : 'Só você',
                   ),
                 ],
               ),

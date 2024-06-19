@@ -7,6 +7,8 @@ class DestinationInput extends StatelessWidget {
   final void Function()? onTap;
   final void Function(String)? onSubmitted;
   final FocusNode? focusNode;
+  final TextEditingController? controller; 
+
 
   const DestinationInput({
     required this.label,
@@ -15,18 +17,19 @@ class DestinationInput extends StatelessWidget {
     this.onTap,
     this.onSubmitted,
     this.focusNode,
+    this.controller, 
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller_ = TextEditingController();
+    TextEditingController _controller = controller ?? TextEditingController();
 
     return Container(
       constraints: const BoxConstraints(maxWidth: 600),
       child: TextField(
-        controller: controller_,
-        focusNode: focusNode, // Definindo o focusNode
+        controller: _controller,
+        focusNode: focusNode,
         onSubmitted: onSubmitted,
         onTap: onTap,
         decoration: InputDecoration(
